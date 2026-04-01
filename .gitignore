@@ -1,0 +1,41 @@
+# 🛡️ MobCap - Git Ignore File
+
+# 🐍 Python / Backend
+backend/venv/
+backend/.env
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+
+# 📱 React Native / Frontend / Expo
+frontend/node_modules/
+frontend/.expo/
+frontend/dist/
+frontend/web-build/
+*.log
+
+# 🗄️ Database / Firebird
+*.fdb
+firebird_data/
+scripts/test_*.py
+scripts/verify_*.py
+scripts/migrate_*.py
+
+# 📦 Dependency managers
+node_modules/
+package-lock.json
+
+# 🖥️ VS Code / OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# 🧪 Temporary files
+tmp/
+*.tmp
+temp/
