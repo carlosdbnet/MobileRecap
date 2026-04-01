@@ -1,5 +1,11 @@
+import sys
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# Garantir que o diretório 'backend' esteja no path para que os imports internos funcionem no Vercel
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from database import engine
 from routers import dashboard, apontamento, exames, falhas, consumo, expedicao, auxiliares
 
