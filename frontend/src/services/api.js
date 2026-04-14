@@ -16,15 +16,24 @@ api.interceptors.request.use(
       const savedIp = await AsyncStorage.getItem('server_ip');
       const savedPort = await AsyncStorage.getItem('server_port');
       
-      const ip = savedIp || '192.168.15.98'; // Mantém o atual como fallback
-      const port = savedPort || '8000';
+      const ip = savedIp || '192.168.15.99'; 
+      const port = savedPort || '8082';
+
+      let baseURL;
       
-      config.baseURL = `http://${ip}:${port}`;
+      if (ip.includes('vercel.app') || ip.startsWith('http')) {
+        baseURL = ip.startsWith('http') ? ip : `https://${ip}`;
+      } else {
+        const portSuffix = port ? `:${port}` : '';
+        baseURL = `http://${ip}${portSuffix}`;
+      }
+      
+      config.baseURL = baseURL;
       console.log(`[API Request] BaseURL: ${config.baseURL}, Path: ${config.url}`);
       return config;
     } catch (error) {
       console.error('Erro ao recuperar configurações de IP:', error);
-      config.baseURL = 'http://192.168.15.98:8000';
+      config.baseURL = 'http://192.168.15.99:8082'; // fallback local
       return config;
     }
   },

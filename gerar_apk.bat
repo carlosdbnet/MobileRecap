@@ -1,11 +1,21 @@
 @echo off
-title MobCap System - Gerador de APK
+title MobRecap System - Gerador de APK
 echo ==========================================
-echo    MOBCAP: INICIANDO GERACAO DE APK
+echo    MOBRECAP: INICIANDO GERACAO DE APK
 echo ==========================================
 echo.
-echo [1/3] Entrando na pasta frontend...
-cd frontend
+echo [1/3] Verificando pasta do projeto...
+if exist "app.json" (
+    echo [OK] Já estamos na pasta do projeto.
+) else if exist "frontend\app.json" (
+    echo [OK] Entrando na pasta frontend...
+    cd frontend
+) else (
+    echo [ERRO] Pasta 'frontend' ou arquivo 'app.json' não encontrado! 
+    echo Certifique-se de estar na pasta 'c:\Sistema\MObRecap'.
+    pause
+    exit /b
+)
 
 echo [2/3] Verificando login no Expo EAS...
 call npx eas-cli whoami

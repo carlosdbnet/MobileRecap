@@ -39,3 +39,9 @@ Thumbs.db
 tmp/
 *.tmp
 temp/
+
+.vercel
+.env*.local
+
+# 🗂️ Arquivos isolados para Testes
+_sandbox/

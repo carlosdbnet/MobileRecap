@@ -34,8 +34,8 @@ export default function ConfiguracaoScreen() {
 
       if (savedIp) setIp(savedIp);
       if (savedPort) setPorta(savedPort);
-      if (savedSetor) setSetor(savedSetor);
-      if (savedOperador) setOperador(savedOperador);
+      if (savedSetor) setSetor(parseInt(savedSetor));
+      if (savedOperador) setOperador(parseInt(savedOperador));
       
       // Carregar listas se o IP estiver definido
       if (savedIp || ip) {
@@ -60,7 +60,15 @@ export default function ConfiguracaoScreen() {
   };
 
   const testarConexao = async () => {
-    const fullUrl = `http://${ip}:${porta}/`;
+    let fullUrl = '';
+    
+    // Detectando se é uma URL completa ou apenas um IP local
+    if (ip.includes('vercel.app') || ip.startsWith('http')) {
+      fullUrl = ip.startsWith('http') ? ip : `https://${ip}`;
+      if (!fullUrl.endsWith('/')) fullUrl += '/';
+    } else {
+      fullUrl = `http://${ip}:${porta}/`;
+    }
     
     if (ip.toLowerCase() === 'localhost' || ip === '127.0.0.1') {
       Alert.alert('IP Inválido', 'No celular (APK), você deve usar o IP local do seu computador (ex: 192.168.15.20) e não localhost.');
@@ -103,6 +111,35 @@ export default function ConfiguracaoScreen() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const limparConfiguracoes = async () => {
+    Alert.alert(
+      'Restaurar Padrões',
+      'Deseja apagar as configurações salvas e voltar ao IP padrão do sistema?',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        { 
+          text: 'Sim, Restaurar', 
+          onPress: async () => {
+            try {
+              await AsyncStorage.removeItem('server_ip');
+              await AsyncStorage.removeItem('server_port');
+              await AsyncStorage.removeItem('default_setor');
+              await AsyncStorage.removeItem('default_operador');
+              
+              setIp('192.168.15.99');
+              setPorta('8082');
+              setTested(false);
+              
+              Alert.alert('Sucesso', 'Configurações resetadas! O app agora usará o IP padrão.');
+            } catch (error) {
+              Alert.alert('Erro', 'Falha ao limpar.');
+            }
+          }
+        }
+      ]
+    );
   };
 
   const salvarConfiguracoes = async () => {
@@ -195,7 +232,7 @@ export default function ConfiguracaoScreen() {
               >
                 <Picker.Item label="Selecione um Setor..." value="" color={colors.textSecondary} />
                 {listaSetores.map(s => (
-                  <Picker.Item key={s.id} label={s.descricao} value={s.id} color={colors.text} />
+                  <Picker.Item key={s.id} label={s.DESCRICAO} value={s.id} color={colors.text} />
                 ))}
               </Picker>
             </View>
@@ -207,12 +244,13 @@ export default function ConfiguracaoScreen() {
               <Picker
                 selectedValue={operador}
                 onValueChange={(itemValue) => setOperador(itemValue)}
-                style={[styles.picker, { color: colors.text }]}
+                style={[styles.picker, { color: colors.text, textAlign: 'left' }]}
+                itemStyle={{ textAlign: 'left' }}
                 dropdownIconColor={colors.text}
               >
                 <Picker.Item label="Selecione um Operador..." value="" color={colors.textSecondary} />
                 {listaOperadores.map(o => (
-                  <Picker.Item key={o.id} label={o.nome} value={o.id} color={colors.text} />
+                  <Picker.Item key={o.id} label={o.NOME} value={o.id} color={colors.text} />
                 ))}
               </Picker>
             </View>
@@ -225,6 +263,13 @@ export default function ConfiguracaoScreen() {
           disabled={!tested}
         >
           <Text style={[styles.saveBtnText, { color: dark ? '#000' : '#FFF' }]}>SALVAR CONFIGURAÇÕES</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={[styles.resetBtn, { borderColor: colors.error }]} 
+          onPress={limparConfiguracoes}
+        >
+          <Text style={[styles.resetBtnText, { color: colors.error }]}>RESTAURAR PADRÕES DE FÁBRICA</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
@@ -250,4 +295,6 @@ const styles = StyleSheet.create({
   saveBtnText: { color: '#FFF', fontWeight: 'bold', fontSize: 16 },
   btnText: { color: '#FFF', fontWeight: 'bold' },
   disabledBtn: { backgroundColor: '#ADB5BD' },
+  resetBtn: { height: 50, borderRadius: 12, borderWidth: 1, justifyContent: 'center', alignItems: 'center', marginTop: 15, borderStyle: 'dashed' },
+  resetBtnText: { fontWeight: 'bold', fontSize: 13 },
 });

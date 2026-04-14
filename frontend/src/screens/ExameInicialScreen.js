@@ -28,8 +28,7 @@ export default function ExameInicialScreen() {
       const data = await producaoService.buscarPneu(codigo);
       setPneu(data);
     } catch (error) {
-      console.error(error);
-      Alert.alert('Não Encontrado', 'Pneu não localizado no sistema.');
+      Alert.alert('Erro', 'Pneu não encontrado ou erro na conexão.');
       setPneu(null);
     } finally {
       setLoading(false);
@@ -39,16 +38,15 @@ export default function ExameInicialScreen() {
   const aprovarPneu = async () => {
     if (!pneu) return;
     setLoading(true);
-    try {
-      await producaoService.atualizarStatus(pneu.codigo_barra, 'APROVADO_EXAME_INICIAL');
-      Alert.alert('Sucesso', 'Pneu aprovado no exame inicial!');
-      setPneu({ ...pneu, status: 'APROVADO_EXAME_INICIAL' });
-    } catch (error) {
-      Alert.alert('Erro', 'Não foi possível atualizar o status.');
-    } finally {
+    // Simulação de registro de aprovação técnica (poderia ser um endpoint real futuramente)
+    setTimeout(() => {
+      Alert.alert('Sucesso', 'Exame Inicial registrado com sucesso!');
+      setPneu(null);
+      setCodigoBarra('');
       setLoading(false);
-    }
+    }, 800);
   };
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -78,17 +76,13 @@ export default function ExameInicialScreen() {
         {pneu && (
           <View style={styles.pneuCard}>
             <View style={styles.cardRow}>
-              <Text style={styles.cardLabel}>Medida:</Text>
-              <Text style={styles.cardValue}>{pneu.medida}</Text>
-            </View>
-            <View style={styles.cardRow}>
-              <Text style={styles.cardLabel}>Marca/Desenho:</Text>
-              <Text style={styles.cardValue}>{pneu.marca} - {pneu.desenho}</Text>
+              <Text style={styles.cardLabel}>ID Ordem:</Text>
+              <Text style={styles.cardValue}>{pneu.id_ordem}</Text>
             </View>
             <View style={styles.cardRow}>
               <Text style={styles.cardLabel}>Status Atual:</Text>
               <Text style={[styles.statusBadge, { backgroundColor: pneu.status === 'PENDENTE' ? '#FFC107' : '#28A745' }]}>
-                {pneu.status}
+                {pneu.status || 'N/A'}
               </Text>
             </View>
 

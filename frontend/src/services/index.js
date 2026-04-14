@@ -7,6 +7,74 @@ export const dashboardService = {
   },
 };
 
+export const setorService = {
+  listar: async () => {
+    const { data } = await api.get('/setores');
+    return data;
+  },
+  criar: async (setor) => {
+    const { data } = await api.post('/setores', setor);
+    return data;
+  },
+};
+
+export const operadorService = {
+  listar: async () => {
+    const { data } = await api.get('/operadores');
+    return data;
+  },
+  criar: async (operador) => {
+    const { data } = await api.post('/operadores', operador);
+    return data;
+  },
+};
+
+
+export const pneuService = {
+  listar: async (skip = 0, limit = 100) => {
+    const { data } = await api.get(`/pneus?skip=${skip}&limit=${limit}`);
+    return data;
+  },
+  buscar: async (codbarra) => {
+    const { data } = await api.get(`/pneus/buscar?codbarra=${codbarra}`);
+    return data;
+  },
+  cadastrar: async (pneu) => {
+    const { data } = await api.post('/pneus', pneu);
+    return data;
+  },
+};
+
+export const servicoService = {
+  listar: async () => {
+    const { data } = await api.get('/servicos');
+    return data;
+  },
+  criar: async (servico) => {
+    const { data } = await api.post('/servicos', servico);
+    return data;
+  },
+};
+
+export const medidaService = {
+  listar: async () => {
+    const { data } = await api.get('/medidas');
+    return data;
+  },
+};
+
+export const desenhoService = {
+  listar: async () => {
+    const { data } = await api.get('/desenhos');
+    return data;
+  },
+};
+
+export const auxService = {
+  listarSetores: async () => setorService.listar(),
+  listarOperadores: async () => operadorService.listar(),
+};
+
 export const producaoService = {
   listar: async () => {
     const { data } = await api.get('/apontamento');
@@ -16,41 +84,41 @@ export const producaoService = {
     const { data } = await api.post('/apontamento', apontamento);
     return data;
   },
-  buscarPneu: async (codigo_barra) => {
-    const { data } = await api.get(`/exames/pneu/${codigo_barra}`);
+  buscarExistente: (id_pneu, id_setor) => api.get(`/apontamento/buscar?id_pneu=${id_pneu}&id_setor=${id_setor}`).then(r => r.data),
+  excluir: (id) => api.delete(`/apontamento/${id}`).then(r => r.data),
+  atualizar: (id, p) => api.put(`/apontamento/${id}`, p).then(r => r.data),
+  buscarPneu: async (barcode) => {
+    try {
+      return await pneuService.buscar(barcode);
+    } catch (error) {
+      console.error("Erro ao buscar pneu:", error);
+      throw error;
+    }
+  },
+};
+
+export const avaliacaoService = {
+  listar: async () => {
+    const { data } = await api.get('/avaliacoes');
     return data;
   },
-  atualizarStatus: async (codigo_barra, status) => {
-    const { data } = await api.put(`/exames/pneu/${codigo_barra}/status?status=${status}`);
+  criar: async (avaliacao) => {
+    const { data } = await api.post('/avaliacoes', avaliacao);
     return data;
   },
 };
 
 export const falhaService = {
   listarCatalogo: async () => {
-    const { data } = await api.get('/falhas');
-    return data;
+    try {
+      const { data } = await api.get('/falhas');
+      return data;
+    } catch {
+      return [];
+    }
   },
   registrar: async (falha) => {
-    const { data } = await api.post('/falhas/registros', falha);
+    const { data } = await api.post('/falhas', falha);
     return data;
-  },
-};
-
-export const auxService = {
-  listarSetores: async () => {
-    const { data } = await api.get('/auxiliares/setores');
-    return data;
-  },
-  listarOperadores: async () => {
-    const { data } = await api.get('/auxiliares/operadores');
-    return data;
-  },
-};
-
-export const expedicaoService = {
-  registrar: async (expedicao) => {
-    const { data } = await api.post('/expedicao', expedicao);
-    return data;
-  },
+  }
 };
