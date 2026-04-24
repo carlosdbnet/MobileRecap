@@ -50,8 +50,8 @@ export default function ConfiguracaoScreen() {
     try {
       const setores = await auxService.listarSetores();
       const operadores = await auxService.listarOperadores();
-      setListaSetores(setores || []);
-      setListaOperadores(operadores || []);
+      setListaSetores(Array.isArray(setores) ? setores : []);
+      setListaOperadores(Array.isArray(operadores) ? operadores : []);
       return { success: true };
     } catch (error) {
       console.warn("Não foi possível carregar listas auxiliares:", error);
@@ -79,7 +79,7 @@ export default function ConfiguracaoScreen() {
     setTested(false);
     try {
       console.log(`Testando conexão em: ${fullUrl}`);
-      const response = await axios.get(fullUrl, { timeout: 8000 });
+      const response = await axios.get(fullUrl, { timeout: 20000 });
       if (response.status === 200) {
         await AsyncStorage.setItem('server_ip', ip);
         await AsyncStorage.setItem('server_port', porta);
