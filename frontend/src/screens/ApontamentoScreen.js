@@ -247,9 +247,9 @@ export default function ApontamentoScreen() {
       );
       if (st) {
         setIdSetor(st.id !== undefined ? st.id : st.ID);
-        // Pula para o Pneu após escanear o Setor
+        // Pula para o Operador após escanear o Setor
         setTimeout(() => {
-          if (inputRef.current) inputRef.current.focus();
+          if (inputOperadorRef.current) inputOperadorRef.current.focus();
         }, 100);
       } else {
         Alert.alert('Aviso', 'Setor não encontrado (Código inválido).');
@@ -381,42 +381,11 @@ export default function ApontamentoScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Text style={[styles.header, { color: colors.text }]}>Apontamento</Text>
-        <Text style={[styles.subHeader, { color: colors.textSecondary }]}>Preencha os dados e escaneie o pneu.</Text>
 
-        <View style={[styles.formGroup, { zIndex: 1000 }]}>
-          <Text style={[styles.label, { color: colors.textSecondary }]}>Setor</Text>
-          <View style={[
-            styles.inputWrapper, 
-            { backgroundColor: colors.inputBackground, borderColor: colors.border, height: 65 },
-            focusedField === 'setor' && { backgroundColor: dark ? '#555500' : '#FFFF00', borderColor: colors.primary, borderWidth: 2 }
-          ]}>
-            <TouchableOpacity 
-              style={{ flex: 1, justifyContent: 'center' }} 
-              onPress={() => setShowSetorModal(true)}
-              activeOpacity={0.7}
-            >
-              <TextInput
-                ref={inputSetorRef}
-                style={{ color: colors.text, paddingHorizontal: 15, fontSize: 16 }}
-                value={idSetor ? (listaSetores.find(s => (s.id || s.ID) === idSetor)?.DESCRICAO || listaSetores.find(s => (s.id || s.ID) === idSetor)?.descricao || 'Selecionado') : ''}
-                placeholder="Selecione um Setor..."
-                placeholderTextColor={colors.textSecondary}
-                editable={false}
-                pointerEvents="none"
-                onFocus={() => setFocusedField('setor')}
-                onBlur={() => setFocusedField(null)}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.scannerBtn, { backgroundColor: colors.primary }]} onPress={() => openScanner('setor')}>
-              <MaterialCommunityIcons name="barcode-scan" size={24} color="#FFFFFF" />
-            </TouchableOpacity>
-          </View>
-        </View>
 
         <View style={[
           styles.formGroup,
-          { zIndex: focusedField === 'pneu' ? 900 : 1, elevation: focusedField === 'pneu' ? 9 : 0 }
+          { zIndex: focusedField === 'pneu' ? 1000 : 900, elevation: focusedField === 'pneu' ? 10 : 9 }
         ]}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Pneu (Cód. Barra / ID)</Text>
           <View style={[
@@ -454,6 +423,36 @@ export default function ApontamentoScreen() {
         </View>
 
         <View style={[styles.formGroup, { zIndex: 800 }]}>
+          <Text style={[styles.label, { color: colors.textSecondary }]}>Setor</Text>
+          <View style={[
+            styles.inputWrapper, 
+            { backgroundColor: colors.inputBackground, borderColor: colors.border, height: 65 },
+            focusedField === 'setor' && { backgroundColor: dark ? '#555500' : '#FFFF00', borderColor: colors.primary, borderWidth: 2 }
+          ]}>
+            <TouchableOpacity 
+              style={{ flex: 1, justifyContent: 'center' }} 
+              onPress={() => setShowSetorModal(true)}
+              activeOpacity={0.7}
+            >
+              <TextInput
+                ref={inputSetorRef}
+                style={{ color: colors.text, paddingHorizontal: 15, fontSize: 16 }}
+                value={idSetor ? (listaSetores.find(s => (s.id || s.ID) === idSetor)?.DESCRICAO || listaSetores.find(s => (s.id || s.ID) === idSetor)?.descricao || 'Selecionado') : ''}
+                placeholder="Selecione um Setor..."
+                placeholderTextColor={colors.textSecondary}
+                editable={false}
+                pointerEvents="none"
+                onFocus={() => setFocusedField('setor')}
+                onBlur={() => setFocusedField(null)}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.scannerBtn, { backgroundColor: colors.primary }]} onPress={() => openScanner('setor')}>
+              <MaterialCommunityIcons name="barcode-scan" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={[styles.formGroup, { zIndex: 700 }]}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Operador Responsável</Text>
           <View style={[
             styles.inputWrapper, 
@@ -586,7 +585,7 @@ export default function ApontamentoScreen() {
                       const val = s.id !== undefined ? s.id : s.ID;
                       setIdSetor(val);
                       setShowSetorModal(false);
-                      if (inputRef.current) setTimeout(() => inputRef.current.focus(), 100);
+                      if (inputOperadorRef.current) setTimeout(() => inputOperadorRef.current.focus(), 100);
                     }}
                   >
                     <Text style={{ color: colors.text }}>{txt}</Text>

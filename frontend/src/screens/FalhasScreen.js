@@ -199,8 +199,7 @@ export default function FalhasScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
-        <Text style={[styles.header, { color: colors.text }]}>Registrar Falha</Text>
-        <Text style={[styles.subHeader, { color: colors.textSecondary }]}>Identifique defeitos técnicos no pneu.</Text>
+
 
         <View style={styles.formGroup}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Pneu (Código de Barras)</Text>

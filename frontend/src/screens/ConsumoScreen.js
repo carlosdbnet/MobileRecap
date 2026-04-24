@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Alert, ActivityIndicator, Modal } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useTheme } from '../context/ThemeContext';
+import { useFocusEffect } from '@react-navigation/native';
 // import { consumoService } from '../services'; // Implementaremos se necessário
 
 export default function ConsumoScreen() {
@@ -26,6 +27,17 @@ export default function ConsumoScreen() {
   useEffect(() => {
     fetchProdutos();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      setTimeout(() => {
+        setFocusedField('produto');
+        if (inputProdutoRef.current) {
+          inputProdutoRef.current.focus();
+        }
+      }, 500);
+    }, [])
+  );
 
   const fetchProdutos = async () => {
     try {
@@ -121,8 +133,7 @@ export default function ConsumoScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
-        <Text style={[styles.header, { color: colors.text }]}>Consumo de Material</Text>
-        <Text style={[styles.subHeader, { color: colors.textSecondary }]}>Registre o uso de insumos na produção.</Text>
+
 
         <View style={[styles.formGroup, { zIndex: (focusedField === 'produto' || showProdutoList) ? 1000 : 1 }]}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Produto / Insumo</Text>

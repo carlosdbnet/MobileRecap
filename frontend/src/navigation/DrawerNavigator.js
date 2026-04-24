@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Alert, BackHandler, StyleSheet, Text, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Alert, BackHandler, StyleSheet, Text, Image, Platform, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { 
   createDrawerNavigator, 
@@ -9,6 +9,9 @@ import {
 } from '@react-navigation/drawer';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTheme } from '../context/ThemeContext';
+import * as Application from 'expo-application';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { credencialService } from '../services';
 
 import DashboardScreen from '../screens/DashboardScreen';
 import LocalizacaoScreen from '../screens/LocalizacaoScreen';
@@ -64,9 +67,58 @@ function CustomDrawerContent(props) {
 
 export default function DrawerNavigator() {
   const { colors } = useTheme();
+  const [isAuthorized, setIsAuthorized] = useState(null); // null = carregando
+
+  useEffect(() => {
+    checkAccess();
+  }, []);
+
+  const checkAccess = async () => {
+    try {
+      // 1. Tentar recuperar status salvo localmente para rapidez
+      const savedAuthStatus = await AsyncStorage.getItem('auth_status');
+      
+      if (savedAuthStatus === 'autorizado') {
+        setIsAuthorized(true);
+        return; // Abre rápido
+      }
+
+      // 2. Se não estiver autorizado localmente, verificar no servidor (id do android)
+      let id = '';
+      if (Platform.OS === 'android') {
+        id = await Application.getAndroidId();
+      } else {
+        id = 'iOS-Device-ID';
+      }
+
+      const cred = await credencialService.verificar(id);
+      const authorized = !!(cred && cred.autorizado);
+      
+      // Atualizar armazenamento local com o status real do servidor
+      if (cred) {
+        await AsyncStorage.setItem('auth_status', cred.autorizado ? 'autorizado' : 'aguardando');
+      } else {
+        await AsyncStorage.setItem('auth_status', 'nao_solicitado');
+      }
+
+      setIsAuthorized(authorized);
+    } catch (error) {
+      console.warn("Erro ao verificar acesso inicial:", error);
+      setIsAuthorized(false);
+    }
+  };
+
+  if (isAuthorized === null) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }}>
+        <ActivityIndicator size="large" color={colors.primary} />
+      </View>
+    );
+  }
+
   return (
     <Drawer.Navigator 
-      initialRouteName="Apontamento"
+      initialRouteName={isAuthorized ? "Apontamento" : "Configuração"}
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
         headerStyle: { backgroundColor: colors.surface },
@@ -76,11 +128,11 @@ export default function DrawerNavigator() {
         drawerInactiveTintColor: colors.textSecondary,
       }}
     >
-      <Drawer.Screen name="Apontamento" component={ApontamentoScreen} options={{ 
-        drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="gesture-tap" color={color} size={size} />
-      }} />
       <Drawer.Screen name="Dashboard" component={DashboardScreen} options={{ 
         drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="view-dashboard" color={color} size={size} />
+      }} />
+      <Drawer.Screen name="Apontamento" component={ApontamentoScreen} options={{ 
+        drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="gesture-tap" color={color} size={size} />
       }} />
       <Drawer.Screen name="Localização" component={LocalizacaoScreen} options={{ 
         drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="map-marker-radius" color={color} size={size} />
@@ -124,8 +176,6 @@ export default function DrawerNavigator() {
         drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="cog" color={color} size={size} />
       }} />
     </Drawer.Navigator>
-  );
-}
   );
 }
 

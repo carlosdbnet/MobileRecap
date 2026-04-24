@@ -144,8 +144,7 @@ export default function AvaliacaoScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Text style={[styles.header, { color: colors.text }]}>Avaliação Técnica</Text>
-        <Text style={[styles.subHeader, { color: colors.textSecondary }]}>Escaneie o pneu e registre o resultado do exame.</Text>
+
 
         <View style={styles.formGroup}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Setor de Avaliação</Text>

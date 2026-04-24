@@ -8,7 +8,7 @@ import axios from 'axios';
 import { auxService, credencialService } from '../services';
 import { useTheme } from '../context/ThemeContext';
 import * as Application from 'expo-application';
-import { Platform } from 'react-native';
+import { Platform, BackHandler } from 'react-native';
 
 export default function ConfiguracaoScreen() {
   const [ip, setIp] = useState('192.168.15.98');
@@ -32,10 +32,12 @@ export default function ConfiguracaoScreen() {
       const savedIp = await AsyncStorage.getItem('server_ip');
       const savedPort = await AsyncStorage.getItem('server_port');
       const savedSetor = await AsyncStorage.getItem('default_setor');
+      const savedAuthStatus = await AsyncStorage.getItem('auth_status');
 
       if (savedIp) setIp(savedIp);
       if (savedPort) setPorta(savedPort);
       if (savedSetor) setSetor(parseInt(savedSetor));
+      if (savedAuthStatus) setAuthStatus(savedAuthStatus);
       
       // Obter ID do Dispositivo e Verificar Autorização
       try {
@@ -171,6 +173,7 @@ export default function ConfiguracaoScreen() {
       await AsyncStorage.setItem('server_ip', ip);
       await AsyncStorage.setItem('server_port', porta);
       await AsyncStorage.setItem('default_setor', String(setor || ''));
+      await AsyncStorage.setItem('auth_status', authStatus);
       
       Alert.alert('Sucesso', 'Configurações salvas!');
     } catch (error) {
@@ -188,6 +191,26 @@ export default function ConfiguracaoScreen() {
       return;
     }
 
+    // Se já solicitou, apenas verifica o status
+    if (authStatus === 'aguardando') {
+      setLoading(true);
+      try {
+        const cred = await credencialService.verificar(deviceId);
+        if (cred && cred.autorizado) {
+          setAuthStatus('autorizado');
+          Alert.alert('Sucesso', 'Seu acesso foi autorizado!');
+        } else {
+          Alert.alert('Aguardando', 'Sua solicitação ainda não foi aprovada pelo administrador.');
+        }
+      } catch (error) {
+        Alert.alert('Erro', 'Não foi possível verificar o status agora.');
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
+    // Se não solicitou, envia nova solicitação
     setLoading(true);
     try {
       await credencialService.solicitar(deviceId, parseInt(setor));
@@ -278,19 +301,33 @@ export default function ConfiguracaoScreen() {
 
         </View>
 
-        <TouchableOpacity 
-          style={[styles.saveBtn, { backgroundColor: colors.text }, !tested && styles.disabledBtn]} 
-          onPress={salvarConfiguracoes}
-          disabled={!tested}
-        >
-          <Text style={[styles.saveBtnText, { color: dark ? '#000' : '#FFF' }]}>SALVAR CONFIGURAÇÕES</Text>
-        </TouchableOpacity>
-
         <View style={[styles.section, { backgroundColor: colors.surface }]}>
           <Text style={[styles.sectionTitle, { color: colors.primary }]}>Credenciamento</Text>
-          <View style={styles.deviceIdContainer}>
-            <Text style={[styles.deviceIdLabel, { color: colors.textSecondary }]}>ID DO DISPOSITIVO:</Text>
-            <Text style={[styles.deviceIdValue, { color: colors.text }]}>{deviceId || 'Obtendo...'}</Text>
+          
+          <View style={styles.deviceIdRow}>
+            <View style={[styles.deviceIdContainer, { flex: 1, marginRight: 10 }]}>
+              <Text style={[styles.deviceIdLabel, { color: colors.textSecondary }]}>ID DO DISPOSITIVO:</Text>
+              <Text style={[styles.deviceIdValue, { color: colors.text }]}>{deviceId || 'Obtendo...'}</Text>
+            </View>
+
+            <TouchableOpacity 
+              style={[
+                styles.smallAuthBtn, 
+                { borderColor: colors.primary, borderWidth: 1 },
+                authStatus === 'autorizado' && { borderColor: colors.textSecondary, opacity: 0.5 }
+              ]} 
+              onPress={solicitarAutorizacao}
+              disabled={loading || authStatus === 'autorizado'}
+            >
+              {loading ? <ActivityIndicator size="small" color={colors.primary} /> : (
+                <Text style={[
+                  styles.authBtnText, 
+                  { color: authStatus === 'autorizado' ? colors.textSecondary : colors.primary }
+                ]}>
+                  {authStatus === 'nao_solicitado' ? 'SOLICITAR' : (authStatus === 'aguardando' ? 'VERIFICAR' : 'OK')}
+                </Text>
+              )}
+            </TouchableOpacity>
           </View>
           
           <View style={styles.statusContainer}>
@@ -302,25 +339,31 @@ export default function ConfiguracaoScreen() {
               {authStatus === 'autorizado' ? 'AUTORIZADO' : (authStatus === 'aguardando' ? 'AGUARDANDO APROVAÇÃO' : 'NÃO SOLICITADO')}
             </Text>
           </View>
-
-          {authStatus === 'nao_solicitado' && (
-            <TouchableOpacity 
-              style={[styles.authBtn, { borderColor: colors.primary, borderWidth: 1 }]} 
-              onPress={solicitarAutorizacao}
-              disabled={loading}
-            >
-              <MaterialCommunityIcons name="shield-check-outline" size={20} color={colors.primary} style={{ marginRight: 8 }} />
-              <Text style={[styles.authBtnText, { color: colors.primary }]}>SOLICITAR AUTORIZAÇÃO</Text>
-            </TouchableOpacity>
-          )}
         </View>
 
         <TouchableOpacity 
-          style={[styles.resetBtn, { borderColor: colors.error }]} 
-          onPress={limparConfiguracoes}
+          style={[styles.saveBtn, { backgroundColor: colors.text }, !tested && styles.disabledBtn]} 
+          onPress={salvarConfiguracoes}
+          disabled={!tested}
         >
-          <Text style={[styles.resetBtnText, { color: colors.error }]}>RESTAURAR PADRÕES DE FÁBRICA</Text>
+          <Text style={[styles.saveBtnText, { color: dark ? '#000' : '#FFF' }]}>SALVAR CONFIGURAÇÕES</Text>
         </TouchableOpacity>
+
+        <View style={styles.footerRow}>
+          <TouchableOpacity 
+            style={[styles.resetBtn, { borderColor: colors.error, flex: 1, marginRight: 10 }]} 
+            onPress={limparConfiguracoes}
+          >
+            <Text style={[styles.resetBtnText, { color: colors.error }]}>RESTAURAR PADRÕES</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={[styles.exitBtn, { backgroundColor: colors.error, flex: 0.4 }]} 
+            onPress={() => BackHandler.exitApp()}
+          >
+            <Text style={styles.exitBtnText}>SAIR</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -345,31 +388,41 @@ const styles = StyleSheet.create({
   saveBtnText: { color: '#FFF', fontWeight: 'bold', fontSize: 16 },
   btnText: { color: '#FFF', fontWeight: 'bold' },
   disabledBtn: { backgroundColor: '#ADB5BD' },
-  resetBtn: { height: 50, borderRadius: 12, borderWidth: 1, justifyContent: 'center', alignItems: 'center', marginTop: 15, borderStyle: 'dashed' },
-  resetBtnText: { fontWeight: 'bold', fontSize: 13 },
-  authBtn: {
+  resetBtn: { height: 50, borderRadius: 12, borderWidth: 1, justifyContent: 'center', alignItems: 'center', borderStyle: 'dashed' },
+  resetBtnText: { fontWeight: 'bold', fontSize: 12 },
+  footerRow: { flexDirection: 'row', alignItems: 'center', marginTop: 15, marginBottom: 20 },
+  exitBtn: {
+
     height: 50,
     borderRadius: 12,
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
   },
-  authBtnText: { fontWeight: 'bold', fontSize: 14 },
+  exitBtnText: { color: '#FFF', fontWeight: 'bold', fontSize: 13 },
+  authBtnText: { fontWeight: 'bold', fontSize: 13 },
+
+  deviceIdRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 5 },
+  smallAuthBtn: {
+    height: 55,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   deviceIdContainer: {
-    padding: 12,
+    padding: 10,
     backgroundColor: 'rgba(0,0,0,0.05)',
     borderRadius: 8,
-    marginBottom: 10,
     alignItems: 'center',
+    justifyContent: 'center',
   },
-  deviceIdLabel: { fontSize: 10, fontWeight: 'bold', marginBottom: 2 },
-  deviceIdValue: { fontSize: 14, fontWeight: 'bold', letterSpacing: 1 },
+  deviceIdLabel: { fontSize: 9, fontWeight: 'bold', marginBottom: 2 },
+  deviceIdValue: { fontSize: 13, fontWeight: 'bold', letterSpacing: 0.5 },
   statusContainer: {
-    padding: 10,
+    padding: 5,
     alignItems: 'center',
-    marginBottom: 5,
+    marginTop: 5,
   },
-  statusLabel: { fontSize: 10, fontWeight: 'bold' },
-  statusValue: { fontSize: 16, fontWeight: 'bold', marginTop: 2 },
+  statusLabel: { fontSize: 9, fontWeight: 'bold' },
+  statusValue: { fontSize: 14, fontWeight: 'bold', marginTop: 1 },
 });

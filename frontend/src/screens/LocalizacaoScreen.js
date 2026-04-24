@@ -85,8 +85,7 @@ export default function LocalizacaoScreen() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
-        <Text style={[styles.header, { color: colors.text }]}>Localização</Text>
-        <Text style={[styles.subHeader, { color: colors.textSecondary }]}>Consulte a localização atual do pneu.</Text>
+
 
         <View style={styles.formGroup}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Pneu (Código de Barras)</Text>
