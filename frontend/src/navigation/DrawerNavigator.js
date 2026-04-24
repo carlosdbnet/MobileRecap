@@ -71,6 +71,7 @@ export default function DrawerNavigator() {
       screenOptions={{
         headerStyle: { backgroundColor: colors.surface },
         headerTintColor: colors.text,
+        headerTitleStyle: { fontWeight: 'bold' },
         drawerActiveTintColor: colors.primary,
         drawerInactiveTintColor: colors.textSecondary,
       }}
@@ -123,6 +124,8 @@ export default function DrawerNavigator() {
         drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="cog" color={color} size={size} />
       }} />
     </Drawer.Navigator>
+  );
+}
   );
 }
 

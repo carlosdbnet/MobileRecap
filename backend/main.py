@@ -212,6 +212,25 @@ def buscar_pneu(codbarra: str, db: Session = Depends(get_db)):
 
     return p_dict
 
+@app.post("/credencial", response_model=schemas.Credencial)
+def solicitar_credencial(cred: schemas.CredencialCreate, db: Session = Depends(get_db)):
+    # Verificar se já existe
+    existente = db.query(models.Credencial).filter(models.Credencial.android_id == cred.android_id).first()
+    if existente:
+        raise HTTPException(status_code=400, detail="Este dispositivo já possui uma solicitação de credencial.")
+    
+    nova = models.Credencial(android_id=cred.android_id, id_setor=cred.id_setor)
+    db.add(nova)
+    db.commit()
+    db.refresh(nova)
+    return nova
+
+@app.get("/credencial/{android_id}", response_model=Optional[schemas.Credencial])
+def check_credencial(android_id: str, db: Session = Depends(get_db)):
+    return db.query(models.Credencial).filter(models.Credencial.android_id == android_id).first()
+
+
+
 @app.post("/pneus", response_model=schemas.Pneu)
 def create_pneu(pneu: schemas.PneuCreate, db: Session = Depends(get_db)):
     return create_generic(models.Pneu, pneu, db)

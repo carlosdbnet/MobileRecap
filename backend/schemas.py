@@ -248,3 +248,17 @@ class RegistroFalha(RegistroFalhaBase):
     model_config = ConfigDict(from_attributes=True)
     id: int
     datareg: Optional[datetime] = None
+
+class CredencialBase(BaseModel):
+    android_id: str
+    id_setor: int
+
+class CredencialCreate(CredencialBase):
+    pass
+
+class Credencial(CredencialBase):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    data_solicitacao: Optional[datetime] = None
+    autorizado: Optional[bool] = False
+

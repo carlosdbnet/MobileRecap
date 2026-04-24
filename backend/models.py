@@ -247,3 +247,11 @@ class PneuServico(Base):
     valor = Column(Numeric(15, 2))
     vrtotal = Column(Numeric(15, 2))
     datalan = Column(TIMESTAMP)
+
+class Credencial(Base):
+    __tablename__ = "credencial"
+    id = Column(Integer, primary_key=True, index=True)
+    android_id = Column(String(100), unique=True, index=True)
+    id_setor = Column(Integer)
+    data_solicitacao = Column(TIMESTAMP, server_default=func.now())
+    autorizado = Column(Boolean, default=False)

@@ -122,3 +122,14 @@ export const falhaService = {
     return data;
   }
 };
+
+export const credencialService = {
+  solicitar: async (android_id, id_setor) => {
+    const { data } = await api.post('/credencial', { android_id, id_setor });
+    return data;
+  },
+  verificar: async (android_id) => {
+    const { data } = await api.get(`/credencial/${android_id}`);
+    return data;
+  },
+};

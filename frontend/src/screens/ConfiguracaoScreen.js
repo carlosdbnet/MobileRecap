@@ -5,21 +5,23 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { auxService } from '../services';
+import { auxService, credencialService } from '../services';
 import { useTheme } from '../context/ThemeContext';
+import * as Application from 'expo-application';
+import { Platform } from 'react-native';
 
 export default function ConfiguracaoScreen() {
   const [ip, setIp] = useState('192.168.15.98');
   const [porta, setPorta] = useState('8082');
   const [setor, setSetor] = useState('');
-  const [operador, setOperador] = useState('');
   const { dark, colors, mode, setMode } = useTheme();
   
   const [listaSetores, setListaSetores] = useState([]);
-  const [listaOperadores, setListaOperadores] = useState([]);
   
   const [loading, setLoading] = useState(false);
   const [tested, setTested] = useState(false);
+  const [deviceId, setDeviceId] = useState('');
+  const [authStatus, setAuthStatus] = useState('nao_solicitado'); // 'nao_solicitado', 'aguardando', 'autorizado'
 
   useEffect(() => {
     loadSettings();
@@ -30,13 +32,33 @@ export default function ConfiguracaoScreen() {
       const savedIp = await AsyncStorage.getItem('server_ip');
       const savedPort = await AsyncStorage.getItem('server_port');
       const savedSetor = await AsyncStorage.getItem('default_setor');
-      const savedOperador = await AsyncStorage.getItem('default_operador');
 
       if (savedIp) setIp(savedIp);
       if (savedPort) setPorta(savedPort);
       if (savedSetor) setSetor(parseInt(savedSetor));
-      if (savedOperador) setOperador(parseInt(savedOperador));
       
+      // Obter ID do Dispositivo e Verificar Autorização
+      try {
+        let id = '';
+        if (Platform.OS === 'android') {
+          id = await Application.getAndroidId();
+          setDeviceId(id);
+        } else {
+          id = 'iOS-Device-ID';
+          setDeviceId(id);
+        }
+
+        // Verificar na API
+        const cred = await credencialService.verificar(id);
+        if (cred) {
+          setAuthStatus(cred.autorizado ? 'autorizado' : 'aguardando');
+        } else {
+          setAuthStatus('nao_solicitado');
+        }
+      } catch (err) {
+        console.warn('Erro ao verificar credencial:', err);
+      }
+
       // Carregar listas se o IP estiver definido
       if (savedIp || ip) {
         fetchAuxiliares(savedIp || ip, savedPort || porta);
@@ -49,9 +71,7 @@ export default function ConfiguracaoScreen() {
   const fetchAuxiliares = async (currentIp, currentPort) => {
     try {
       const setores = await auxService.listarSetores();
-      const operadores = await auxService.listarOperadores();
       setListaSetores(Array.isArray(setores) ? setores : []);
-      setListaOperadores(Array.isArray(operadores) ? operadores : []);
       return { success: true };
     } catch (error) {
       console.warn("Não foi possível carregar listas auxiliares:", error);
@@ -126,7 +146,6 @@ export default function ConfiguracaoScreen() {
               await AsyncStorage.removeItem('server_ip');
               await AsyncStorage.removeItem('server_port');
               await AsyncStorage.removeItem('default_setor');
-              await AsyncStorage.removeItem('default_operador');
               
               setIp('192.168.15.98');
               setPorta('8082');
@@ -152,7 +171,6 @@ export default function ConfiguracaoScreen() {
       await AsyncStorage.setItem('server_ip', ip);
       await AsyncStorage.setItem('server_port', porta);
       await AsyncStorage.setItem('default_setor', String(setor || ''));
-      await AsyncStorage.setItem('default_operador', String(operador || ''));
       
       Alert.alert('Sucesso', 'Configurações salvas!');
     } catch (error) {
@@ -160,12 +178,32 @@ export default function ConfiguracaoScreen() {
     }
   };
 
+  const solicitarAutorizacao = async () => {
+    if (!deviceId) {
+      Alert.alert('Erro', 'Não foi possível obter o ID do dispositivo.');
+      return;
+    }
+    if (!setor) {
+      Alert.alert('Aviso', 'Selecione o Setor Padrão antes de solicitar autorização.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await credencialService.solicitar(deviceId, parseInt(setor));
+      setAuthStatus('aguardando');
+      Alert.alert('Sucesso', 'Solicitação de credencial enviada com sucesso!');
+    } catch (error) {
+      const msg = error.response?.data?.detail || 'Não foi possível enviar a solicitação.';
+      Alert.alert('Erro', msg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Text style={[styles.header, { color: colors.text }]}>Configurações</Text>
-        <Text style={[styles.subHeader, { color: colors.textSecondary }]}>Ajuste conexão e selecione os padrões.</Text>
-
         <View style={[styles.section, { backgroundColor: colors.surface }]}>
           <Text style={[styles.sectionTitle, { color: colors.primary }]}>Preferências Visuais</Text>
           <View style={styles.formGroup}>
@@ -238,23 +276,6 @@ export default function ConfiguracaoScreen() {
             </View>
           </View>
 
-          <View style={styles.formGroup}>
-            <Text style={[styles.label, { color: colors.textSecondary }]}>Operador Padrão</Text>
-            <View style={[styles.pickerContainer, { backgroundColor: colors.inputBackground, borderColor: colors.border }]}>
-              <Picker
-                selectedValue={operador}
-                onValueChange={(itemValue) => setOperador(itemValue)}
-                style={[styles.picker, { color: colors.text, textAlign: 'left' }]}
-                itemStyle={{ textAlign: 'left' }}
-                dropdownIconColor={colors.text}
-              >
-                <Picker.Item label="Selecione um Operador..." value="" color={colors.textSecondary} />
-                {listaOperadores.map(o => (
-                  <Picker.Item key={o.id} label={o.nome || o.NOME} value={o.id} color={colors.text} />
-                ))}
-              </Picker>
-            </View>
-          </View>
         </View>
 
         <TouchableOpacity 
@@ -264,6 +285,35 @@ export default function ConfiguracaoScreen() {
         >
           <Text style={[styles.saveBtnText, { color: dark ? '#000' : '#FFF' }]}>SALVAR CONFIGURAÇÕES</Text>
         </TouchableOpacity>
+
+        <View style={[styles.section, { backgroundColor: colors.surface }]}>
+          <Text style={[styles.sectionTitle, { color: colors.primary }]}>Credenciamento</Text>
+          <View style={styles.deviceIdContainer}>
+            <Text style={[styles.deviceIdLabel, { color: colors.textSecondary }]}>ID DO DISPOSITIVO:</Text>
+            <Text style={[styles.deviceIdValue, { color: colors.text }]}>{deviceId || 'Obtendo...'}</Text>
+          </View>
+          
+          <View style={styles.statusContainer}>
+            <Text style={[styles.statusLabel, { color: colors.textSecondary }]}>STATUS:</Text>
+            <Text style={[
+              styles.statusValue, 
+              { color: authStatus === 'autorizado' ? '#28A745' : (authStatus === 'aguardando' ? '#FFC107' : colors.textSecondary) }
+            ]}>
+              {authStatus === 'autorizado' ? 'AUTORIZADO' : (authStatus === 'aguardando' ? 'AGUARDANDO APROVAÇÃO' : 'NÃO SOLICITADO')}
+            </Text>
+          </View>
+
+          {authStatus === 'nao_solicitado' && (
+            <TouchableOpacity 
+              style={[styles.authBtn, { borderColor: colors.primary, borderWidth: 1 }]} 
+              onPress={solicitarAutorizacao}
+              disabled={loading}
+            >
+              <MaterialCommunityIcons name="shield-check-outline" size={20} color={colors.primary} style={{ marginRight: 8 }} />
+              <Text style={[styles.authBtnText, { color: colors.primary }]}>SOLICITAR AUTORIZAÇÃO</Text>
+            </TouchableOpacity>
+          )}
+        </View>
 
         <TouchableOpacity 
           style={[styles.resetBtn, { borderColor: colors.error }]} 
@@ -297,4 +347,29 @@ const styles = StyleSheet.create({
   disabledBtn: { backgroundColor: '#ADB5BD' },
   resetBtn: { height: 50, borderRadius: 12, borderWidth: 1, justifyContent: 'center', alignItems: 'center', marginTop: 15, borderStyle: 'dashed' },
   resetBtnText: { fontWeight: 'bold', fontSize: 13 },
+  authBtn: {
+    height: 50,
+    borderRadius: 12,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  authBtnText: { fontWeight: 'bold', fontSize: 14 },
+  deviceIdContainer: {
+    padding: 12,
+    backgroundColor: 'rgba(0,0,0,0.05)',
+    borderRadius: 8,
+    marginBottom: 10,
+    alignItems: 'center',
+  },
+  deviceIdLabel: { fontSize: 10, fontWeight: 'bold', marginBottom: 2 },
+  deviceIdValue: { fontSize: 14, fontWeight: 'bold', letterSpacing: 1 },
+  statusContainer: {
+    padding: 10,
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  statusLabel: { fontSize: 10, fontWeight: 'bold' },
+  statusValue: { fontSize: 16, fontWeight: 'bold', marginTop: 2 },
 });
