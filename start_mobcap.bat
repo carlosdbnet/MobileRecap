@@ -16,6 +16,7 @@ start "MobCap Backend" cmd /k "cd /d %BASE_DIR%backend && venv\Scripts\python -m
 
 :: Iniciando o Frontend Expo
 echo [2/2] Iniciando Frontend Expo...
+echo DICA: Se o QR Code falhar no celular, use "npx expo start --tunnel" na pasta frontend.
 start "MobCap Frontend" cmd /k "cd /d %BASE_DIR%frontend && npx expo start"
 
 echo.

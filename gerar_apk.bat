@@ -1,7 +1,7 @@
 @echo off
-title MobRecap System - Gerador de APK
+title Mobcap System - Gerador de APK
 echo ==========================================
-echo    MOBRECAP: INICIANDO GERACAO DE APK
+echo    Mobcap: INICIANDO GERACAO DE APK
 echo ==========================================
 echo.
 echo [1/3] Verificando pasta do projeto...
@@ -12,7 +12,7 @@ if exist "app.json" (
     cd frontend
 ) else (
     echo [ERRO] Pasta 'frontend' ou arquivo 'app.json' não encontrado! 
-    echo Certifique-se de estar na pasta 'c:\Sistema\MObRecap'.
+    echo Certifique-se de estar na pasta 'c:\Sistema\Mobcap'.
     pause
     exit /b
 )

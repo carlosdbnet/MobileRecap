@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "mobrecap",
-    "slug": "mobrecap",
+    "name": "mobcap",
+    "slug": "mobcap",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "mobrecap",
+    "scheme": "mobcap",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

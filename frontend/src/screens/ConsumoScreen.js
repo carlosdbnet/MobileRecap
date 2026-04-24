@@ -109,6 +109,8 @@ export default function ConsumoScreen() {
       setIdProduto('');
       setSearchTextProduto('');
       setQuantidade('');
+      setFocusedField('produto');
+      if (inputProdutoRef.current) setTimeout(() => inputProdutoRef.current.focus(), 150);
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível registrar o consumo.');
     } finally {
@@ -126,7 +128,8 @@ export default function ConsumoScreen() {
           <Text style={[styles.label, { color: colors.textSecondary }]}>Produto / Insumo</Text>
           <View style={[
             styles.inputWrapper, 
-            { backgroundColor: colors.inputBackground, borderColor: colors.border }
+            { backgroundColor: colors.inputBackground, borderColor: colors.border },
+            focusedField === 'produto' && { backgroundColor: dark ? '#555500' : '#FFFF00', borderColor: colors.primary, borderWidth: 2 }
           ]}>
             <TextInput 
               ref={inputProdutoRef}
@@ -182,19 +185,29 @@ export default function ConsumoScreen() {
         <View style={styles.formGroup}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Quantidade consumida</Text>
           <TextInput 
-            style={[styles.inputSingle, { backgroundColor: colors.inputBackground, borderColor: colors.border, color: colors.text }]} 
+            style={[
+              styles.inputSingle, 
+              { backgroundColor: colors.inputBackground, borderColor: colors.border, color: colors.text },
+              focusedField === 'quantidade' && { backgroundColor: dark ? '#555500' : '#FFFF00', borderColor: colors.primary, borderWidth: 2 }
+            ]} 
             placeholder="Ex: 5.5 (kg/un)" 
             placeholderTextColor={colors.textSecondary}
             value={quantidade}
+            onFocus={() => setFocusedField('quantidade')}
+            onBlur={() => setFocusedField(null)}
             onChangeText={setQuantidade}
             keyboardType="decimal-pad"
           />
         </View>
 
         <TouchableOpacity 
-          style={[styles.saveBtn, { backgroundColor: colors.primary }, loading && { opacity: 0.7 }]} 
+          style={[
+            styles.saveBtn, 
+            { backgroundColor: (idProduto && parseFloat(quantidade) > 0) ? colors.primary : '#999' },
+            loading && { opacity: 0.7 }
+          ]} 
           onPress={salvarConsumo}
-          disabled={loading}
+          disabled={loading || !idProduto || !(parseFloat(quantidade) > 0)}
         >
           {loading ? <ActivityIndicator color="#FFF" /> : <Text style={styles.saveBtnText}>REGISTRAR CONSUMO</Text>}
         </TouchableOpacity>

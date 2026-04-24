@@ -170,18 +170,31 @@ def list_pneus(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 @app.get("/pneus/buscar")
 def buscar_pneu(codbarra: str, db: Session = Depends(get_db)):
     codbarra = codbarra.strip()
-    result = db.query(models.Pneu, models.OrdemServico.numos, models.Contato.razaosocial).\
+    result = db.query(
+        models.Pneu, 
+        models.OrdemServico.numos, 
+        models.Contato.razaosocial,
+        models.OrdemServico.dataentrada,
+        models.OrdemServico.vrtotal,
+        models.Medida.descricao.label("medida_desc"),
+        models.Desenho.descricao.label("desenho_desc")
+    ).\
         outerjoin(models.OrdemServico, models.Pneu.id_ordem == models.OrdemServico.id).\
         outerjoin(models.Contato, models.Pneu.id_contato == models.Contato.id).\
+        outerjoin(models.Medida, models.Pneu.id_medida == models.Medida.id).\
+        outerjoin(models.Desenho, models.Pneu.id_desenho == models.Desenho.id).\
         filter(models.Pneu.codbarra == codbarra).first()
     
     if not result:
         raise HTTPException(status_code=404, detail=f"Pneu '{codbarra}' não encontrado")
     
-    p, numos, razaosocial = result
+    p, numos, razaosocial, dataentrada, vrtotal_os, medida_desc, desenho_desc = result
     p_dict = {c.name: getattr(p, c.name) for c in p.__table__.columns}
     p_dict["numos"] = numos
     p_dict["nome_cliente"] = razaosocial if razaosocial else "Sem nome cadastrado"
+    p_dict["dataentrada"] = dataentrada
+    p_dict["vrtotal_os"] = float(vrtotal_os) if vrtotal_os else 0.0
+    p_dict["produto_desc"] = f"{medida_desc or ''} {desenho_desc or ''}".strip() or "Descrição não disponível"
 
     # Buscar Histórico de Apontamentos (Produção)
     historico = db.query(models.Producao, models.Setor.descricao, models.Setor.sequencia).\

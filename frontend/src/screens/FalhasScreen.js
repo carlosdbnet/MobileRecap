@@ -186,6 +186,8 @@ export default function FalhasScreen() {
       setFalhaSelecionada(null);
       setSearchTextFalha('');
       setObservacao('');
+      setFocusedField('pneu');
+      if (inputPneuRef.current) setTimeout(() => inputPneuRef.current.focus(), 150);
     } catch (error) {
       console.error(error);
       Alert.alert('Erro', 'Falha ao registrar ocorrência.');
@@ -202,15 +204,20 @@ export default function FalhasScreen() {
 
         <View style={styles.formGroup}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Pneu (Código de Barras)</Text>
-          <View style={[styles.inputWrapper, { backgroundColor: colors.inputBackground, borderColor: colors.border }]}>
+          <View style={[
+            styles.inputWrapper, 
+            { backgroundColor: colors.inputBackground, borderColor: colors.border },
+            focusedField === 'pneu' && { backgroundColor: dark ? '#555500' : '#FFFF00', borderColor: colors.primary, borderWidth: 2 }
+          ]}>
             <TextInput 
               ref={inputPneuRef}
-              autoFocus={true}
               style={[styles.inputSingle, { color: colors.text, flex: 1, borderWidth: 0, backgroundColor: 'transparent' }]} 
               placeholder="Escaneie ou digite o pneu" 
               placeholderTextColor={colors.textSecondary}
               value={codigoBarra}
               onChangeText={setCodigoBarra}
+              onFocus={() => setFocusedField('pneu')}
+              onBlur={() => setFocusedField(null)}
               onSubmitEditing={() => validarPneu(codigoBarra)}
             />
             <TouchableOpacity style={[styles.scanBtn, { backgroundColor: colors.primary }]} onPress={() => openScanner('pneu')}>
@@ -282,7 +289,11 @@ export default function FalhasScreen() {
 
         <View style={[styles.formGroup, { zIndex: (focusedField === 'falha' || showFalhaList) ? 1000 : 1 }]}>
           <Text style={[styles.label, { color: colors.textSecondary }]}>Tipo de Falha</Text>
-          <View style={[styles.inputWrapper, { backgroundColor: colors.inputBackground, borderColor: colors.border }]}>
+          <View style={[
+            styles.inputWrapper, 
+            { backgroundColor: colors.inputBackground, borderColor: colors.border },
+            focusedField === 'falha' && { backgroundColor: dark ? '#555500' : '#FFFF00', borderColor: colors.primary, borderWidth: 2 }
+          ]}>
             <TextInput 
               ref={inputFalhaRef}
               style={[styles.inputSingle, { color: colors.text, flex: 1, borderWidth: 0, backgroundColor: 'transparent' }]} 
@@ -336,11 +347,17 @@ export default function FalhasScreen() {
           <Text style={[styles.label, { color: colors.textSecondary }]}>Observações Técnicas</Text>
           <TextInput 
             ref={inputObsRef}
-            style={[styles.inputSingle, { backgroundColor: colors.inputBackground, borderColor: colors.border, color: colors.text, height: 100, textAlignVertical: 'top', paddingTop: 15 }]} 
+            style={[
+              styles.inputSingle, 
+              { backgroundColor: colors.inputBackground, borderColor: colors.border, color: colors.text, height: 100, textAlignVertical: 'top', paddingTop: 15 },
+              focusedField === 'obs' && { backgroundColor: dark ? '#555500' : '#FFFF00', borderColor: colors.primary, borderWidth: 2 }
+            ]} 
             placeholder="Detalhes adicionais sobre a falha..." 
             placeholderTextColor={colors.textSecondary}
             multiline
             value={observacao}
+            onFocus={() => setFocusedField('obs')}
+            onBlur={() => setFocusedField(null)}
             onChangeText={setObservacao}
           />
         </View>

@@ -10,7 +10,7 @@ import { useTheme } from '../context/ThemeContext';
 
 export default function ConfiguracaoScreen() {
   const [ip, setIp] = useState('192.168.15.98');
-  const [porta, setPorta] = useState('8000');
+  const [porta, setPorta] = useState('8082');
   const [setor, setSetor] = useState('');
   const [operador, setOperador] = useState('');
   const { dark, colors, mode, setMode } = useTheme();
@@ -128,7 +128,7 @@ export default function ConfiguracaoScreen() {
               await AsyncStorage.removeItem('default_setor');
               await AsyncStorage.removeItem('default_operador');
               
-              setIp('192.168.15.99');
+              setIp('192.168.15.98');
               setPorta('8082');
               setTested(false);
               

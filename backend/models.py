@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Numeric, ForeignKey, CHAR, TIMESTAMP, Boolean, func
+from sqlalchemy import Column, Integer, String, Numeric, ForeignKey, CHAR, TIMESTAMP, Boolean, func, Text
 from sqlalchemy.orm import relationship
 from database import Base
 
@@ -6,7 +6,7 @@ class Empresa(Base):
     __tablename__ = "empresa"
     id = Column(Integer, primary_key=True, index=True)
     cnpj = Column(String(18))
-    nome = Column(String(50)) # Anteriormente nomefantasia
+    nome = Column(String(50))
     razaosocial = Column(String(100))
     endereco = Column(String(60))
     numcasa = Column(String(10))
@@ -17,15 +17,21 @@ class Empresa(Base):
     telefone = Column(String(17))
     cxpostal = Column(String(6))
     email = Column(String(80))
-    inscestadual = Column(String(15)) # Anteriormente inscricao
+    inscestadual = Column(String(15))
     inscmunicipio = Column(String(12))
-    ativo = Column(Boolean) # Ajustado para Boolean conforme DB
+    ativo = Column(Boolean)
     token = Column(String(8000))
 
 class Contato(Base):
     __tablename__ = "contato"
     id = Column(Integer, primary_key=True, index=True)
     razaosocial = Column(String(100))
+    nome = Column(String(100))
+    cpfcnpj = Column(String(18))
+    cidade = Column(String(60))
+    uf = Column(String(2))
+    email = Column(String(80))
+    foneprincipal = Column(String(20))
 
 class Setor(Base):
     __tablename__ = "setor"
@@ -36,21 +42,23 @@ class Setor(Base):
     tempomedio = Column(Integer)
     tempominimo = Column(Integer)
     qmeta = Column(Integer)
-    ativo = Column(Boolean) # Ajustado para Boolean
+    ativo = Column(Boolean)
+    avaliacao = Column(Boolean)
+    falha = Column(Boolean)
+    consumomp = Column(Boolean)
+    faturamento = Column(Boolean)
+    proxsetor = Column(String(10))
 
 class Operador(Base):
     __tablename__ = "operador"
     id = Column(Integer, primary_key=True, index=True)
-    codigo = Column(CHAR(20), nullable=False) # Ajustado para CHAR
+    codigo = Column(CHAR(20), nullable=False)
     nome = Column(String(80))
     cargo = Column(String(10))
-    codset = Column(String(10))
-    coddep = Column(String(10))
+    id_setor = Column(Integer, ForeignKey("setor.id"))
+    ativo = Column(Boolean)
     qmeta = Column(Integer)
     valor = Column(Numeric(15, 2))
-    ativo = Column(Boolean) # Ajustado para Boolean
-    id_depto = Column(Integer)
-    id_setor = Column(Integer, ForeignKey("setor.id"))
     
     setor = relationship("Setor")
 
@@ -59,25 +67,21 @@ class Medida(Base):
     id = Column(Integer, primary_key=True, index=True)
     codigo = Column(String(15), nullable=False)
     descricao = Column(String(50))
-    tipo = Column(String(5))
-    ativo = Column(Boolean) # Ajustado para Boolean
+    ativo = Column(Boolean)
 
 class Desenho(Base):
     __tablename__ = "desenho"
     id = Column(Integer, primary_key=True, index=True)
     codigo = Column(String(10))
     descricao = Column(String(50))
-    tipo = Column(String(1))
-    ativo = Column(Boolean) # Ajustado para Boolean
+    ativo = Column(Boolean)
 
 class TipoRecap(Base):
     __tablename__ = "tiporecap"
     id = Column(Integer, primary_key=True, index=True)
     codigo = Column(String(5))
     descricao = Column(String(50))
-    ativo = Column(Boolean) # Ajustado para Boolean
-    userlan = Column(String(20))
-    datalan = Column(TIMESTAMP)
+    ativo = Column(Boolean)
 
 class TipoNota(Base):
     __tablename__ = "tiponota"
@@ -85,9 +89,7 @@ class TipoNota(Base):
     codigo = Column(Integer)
     sinal = Column(String(1))
     descricao = Column(String(50))
-    ativo = Column(Boolean) # Ajustado para Boolean
-    userlan = Column(String(20))
-    datalan = Column(TIMESTAMP)
+    ativo = Column(Boolean)
 
 class Servico(Base):
     __tablename__ = "servico"
@@ -101,87 +103,57 @@ class Servico(Base):
     desenho = Column(String(20))
     codrecap = Column(String(5))
     piso = Column(String(3))
-    ativo = Column(Boolean) # Ajustado para Boolean
+    ativo = Column(Boolean)
+
 class OrdemServico(Base):
     __tablename__ = "ordemservico"
     id = Column(Integer, primary_key=True, index=True)
-    codemp = Column(String(3))
+    id_empresa = Column(Integer)
+    id_contato = Column(Integer)
+    id_vendedor = Column(Integer)
+    id_banco = Column(Integer)
+    id_planopag = Column(Integer)
+    id_contrato = Column(Integer)
+    id_borracheiro = Column(Integer)
     numos = Column(Integer)
-    tipofat = Column(Integer)
-    numctr = Column(Integer)
-    cpfcgc = Column(String(18))
-    endent = Column(Integer)
-    endcob = Column(Integer)
-    diaspre = Column(Integer)
-    dataos = Column(TIMESTAMP)
-    datapre = Column(TIMESTAMP)
-    datafat = Column(TIMESTAMP)
-    dataent = Column(TIMESTAMP)
-    notaent = Column(Integer)
-    frete = Column(String(1))
-    codtransp = Column(String(5))
-    unipro = Column(String(3))
-    codven = Column(String(5))
-    codban = Column(String(4))
-    numage = Column(String(4))
-    codcfo = Column(String(5))
-    codmsg = Column(Integer)
-    codplano = Column(Integer)
-    valprod = Column(Numeric(15, 2))
-    valserv = Column(Numeric(15, 2))
-    vallivr = Column(Numeric(15, 2))
-    vbonus = Column(Numeric(15, 2))
-    vcarca = Column(Numeric(15, 2))
-    vconv = Column(Numeric(15, 2))
-    vrequi = Column(Numeric(15, 2))
-    valfrete = Column(Numeric(15, 2))
-    totalfat = Column(Numeric(15, 2))
-    vdescprod = Column(Numeric(15, 2))
-    vdescserv = Column(Numeric(15, 2))
-    qbonus = Column(Integer)
-    pdescprod = Column(Numeric(15, 2))
-    pdescserv = Column(Numeric(15, 2))
-    pcomserv = Column(Numeric(15, 2))
-    pcomprod = Column(Numeric(15, 2))
-    placa = Column(String(9))
-    carcaca = Column(String(1))
-    cgcreq = Column(String(18))
-    acabado = Column(String(1))
-    msg_nf = Column(String)
-    obs_fat = Column(String)
-    userlan = Column(String(10))
+    dataentrada = Column(TIMESTAMP)
+    dataprevisao = Column(TIMESTAMP)
+    vrservico = Column(Numeric(15, 2))
+    vrtotal = Column(Numeric(15, 2))
+    vrproduto = Column(Numeric(15, 2))
+    vrcarcaca = Column(Numeric(15, 2))
+    vrbonus = Column(Numeric(15, 2))
+    vrmontagem = Column(Numeric(15, 2))
+    pcomissao = Column(Numeric(15, 2))
+    vrcomissao = Column(Numeric(15, 2))
+    id_mobos = Column(Integer)
     datalan = Column(TIMESTAMP)
-    docorigem = Column(Integer)
-    statlib = Column(String(1))
+    serienotaent = Column(Integer)
+    numnotaent = Column(Integer)
+    emissaopropria = Column(Boolean)
     datalib = Column(TIMESTAMP)
-    userlib = Column(String(10))
-    senhalib = Column(String(15))
-    motivolib = Column(String)
-    serient = Column(String(3))
-    emitnfe = Column(String(1))
-    statnfe = Column(String(1))
-    nummob = Column(Integer)
-    somentepar = Column(String(1))
-    mudardesenho = Column(String(50))
-    formapg = Column(String(10))
-    unifat = Column(String(3))
-    datadig = Column(TIMESTAMP)
-    useretiq = Column(String(10))
-    borracheiro = Column(String(100))
-    vserv = Column(Numeric(15, 2))
-    planta = Column(String(1))
-    status = Column(String(1))
+    placa = Column(String(10))
+    descricaoveiculo = Column(String(50))
+    motivolib = Column(Text)
+    obs_fatura = Column(Text)
+    chavenotaent = Column(String(50))
+    userlan = Column(CHAR(20))
+    statuslib = Column(CHAR(1))
+    status = Column(String(20))
+    usuariolib = Column(CHAR(20))
+    senhalib = Column(CHAR(20))
 
 class Pneu(Base):
     __tablename__ = "pneu"
     id = Column(Integer, primary_key=True, index=True)
     id_ordem = Column(Integer)
-    id_nota = Column(Integer)
-    id_recap = Column(Integer)
+    id_fatura = Column(Integer) # Antes id_nota
+    id_empresa = Column(Integer)
     id_contato = Column(Integer)
+    id_medida = Column(Integer)
+    id_desenho = Column(Integer)
     codbarra = Column(String(15))
-    numnota = Column(Integer)
-    numserie = Column(CHAR(20)) # Ajustado para CHAR
+    numserie = Column(CHAR(20))
     numfogo = Column(String(10))
     dot = Column(String(15))
     placa = Column(String(9))
@@ -190,40 +162,12 @@ class Pneu(Base):
     quant = Column(Integer)
     valor = Column(Numeric(15, 2))
     vrtotal = Column(Numeric(15, 2))
-    vrtabela = Column(Numeric(15, 2))
-    pdescto = Column(Numeric(15, 2))
-    vrcarcaca = Column(Numeric(15, 2))
-    vrcustomp = Column(Numeric(15, 2))
-    vrcustodesp = Column(Numeric(15, 2))
-    statuspro = Column(Boolean) # Ajustado para Boolean
-    statusfat = Column(Boolean) # Ajustado para Boolean
+    statuspro = Column(Boolean)
+    statusfat = Column(Boolean)
     obs = Column(String(80))
     valornfe = Column(Numeric(15, 2))
-    userlan = Column(String(10))
-    datalan = Column(TIMESTAMP)
-    id_laudo = Column(Integer) # Ajustado para Integer
+    id_laudo = Column(Integer)
     id_exped = Column(Integer)
-    id_medida = Column(Integer)
-    id_desenho = Column(Integer)
-    id_marca = Column(Integer)
-
-class PneuServico(Base):
-    __tablename__ = "pneu_servico"
-    id = Column(Integer, primary_key=True, index=True)
-    id_pneu = Column(Integer)
-    id_servico = Column(Integer)
-    id_nota = Column(Integer)
-    seqsrv = Column(Integer)
-    codservico = Column(String(30))
-    piso = Column(String(3))
-    quant = Column(Integer)
-    valor = Column(Numeric(15, 2))
-    vrtotal = Column(Numeric(15, 2))
-    vrtabela = Column(Numeric(15, 2))
-    vdesc = Column(Numeric(15, 2))
-    pcomiss = Column(Numeric(15, 2))
-    vcomiss = Column(Numeric(15, 2))
-    userlan = Column(String(10))
     datalan = Column(TIMESTAMP)
 
 class Producao(Base):
@@ -232,17 +176,13 @@ class Producao(Base):
     id_pneu = Column(Integer)
     id_setor = Column(Integer)
     id_operador = Column(Integer, nullable=False)
-    id_recap = Column(Integer)
-    id_maquina = Column(Integer)
-    id_proximo = Column(Integer)
-    id_retrabalho = Column(Integer)
+    id_retrabalho = Column(Integer, default=0)
     codbarra = Column(String(30))
     status = Column(String(1))
-    inicio = Column(TIMESTAMP) # Antigo DATAINI
-    termino = Column(TIMESTAMP) # Antigo DATAFIM
+    inicio = Column(TIMESTAMP)
+    termino = Column(TIMESTAMP)
     tempo = Column(Numeric(15, 2))
     obs = Column(String(100))
-    userlan = Column(String(20))
     datalan = Column(TIMESTAMP, server_default=func.now())
 
 class Avaliacao(Base):
@@ -251,18 +191,12 @@ class Avaliacao(Base):
     id_pneu = Column(Integer, nullable=False)
     id_setor = Column(Integer, nullable=False)
     codbarra = Column(String(30), nullable=False)
-    id_empresa = Column(Integer)
-    numos = Column(Integer)
-    seqos = Column(Integer)
     dataexa = Column(TIMESTAMP, server_default=func.now())
     tempo = Column(Numeric(15, 2))
     resultado = Column(String(1))
     obs = Column(String(100))
-    userlan = Column(String(20))
-    datalan = Column(TIMESTAMP, server_default=func.now())
 
 class Falha(Base):
-    """Catálogo de tipos de falha (tabela física: falha)"""
     __tablename__ = "falha"
     id = Column(Integer, primary_key=True, index=True)
     codigo = Column(Integer)
@@ -270,7 +204,6 @@ class Falha(Base):
     ativo = Column(Boolean, default=True)
 
 class RegistroFalha(Base):
-    """Registro de falhas em pneus (tabela PNEU_FALHA)"""
     __tablename__ = "pneu_falha"
     id = Column(Integer, primary_key=True, index=True)
     id_pneu = Column(Integer, nullable=False)
@@ -280,6 +213,17 @@ class RegistroFalha(Base):
     codbarra = Column(String(30))
     motivo = Column(String(255))
     datareg = Column(TIMESTAMP)
-    valor = Column(Numeric(15, 2))
-    userlan = Column(String(20))
     datalan = Column(TIMESTAMP, server_default=func.now())
+
+class PneuServico(Base):
+    __tablename__ = "pneu_servico"
+    id = Column(Integer, primary_key=True, index=True)
+    id_pneu = Column(Integer, ForeignKey("pneu.id"))
+    id_servico = Column(Integer)
+    id_empresa = Column(Integer)
+    id_ordem = Column(Integer)
+    id_fatura = Column(Integer)
+    quant = Column(Integer)
+    valor = Column(Numeric(15, 2))
+    vrtotal = Column(Numeric(15, 2))
+    datalan = Column(TIMESTAMP)

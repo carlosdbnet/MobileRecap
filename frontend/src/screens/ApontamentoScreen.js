@@ -1,10 +1,9 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { CameraView, useCameraPermissions } from 'expo-camera';
+import * as Camera from 'expo-camera';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Picker } from '@react-native-picker/picker';
 import { useTheme } from '../context/ThemeContext';
 import { auxService, pneuService, producaoService } from '../services';
 
@@ -38,27 +37,47 @@ export default function ApontamentoScreen() {
   const inputClienteRef = useRef(null);
   const inputInicioRef = useRef(null);
   const inputTerminoRef = useRef(null);
-  const [permission, requestPermission] = useCameraPermissions();
+  
+  // Hook de permissão com verificação de segurança
+  const cameraPermission = Camera.useCameraPermissions ? Camera.useCameraPermissions() : [null, () => {}];
+  const [permission, requestPermission] = cameraPermission;
+
+  // Função manual de formatação de hora (mais estável que toLocaleTimeString)
+  const getNowTimeStr = () => {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    return `${hh}:${mm}`;
+  };
 
   useEffect(() => {
-    fetchAuxiliares();
-    loadDefaults().then(() => {
-      // Auto-focus visual no Pneu (destaque amarelo) e foca o input
-      setTimeout(() => {
-        setFocusedField('pneu');
-        if (inputRef.current) inputRef.current.focus();
-      }, 500);
-    });
+    const init = async () => {
+      try {
+        await loadDefaults();
+        // Não aguardamos o fetchAuxiliares para não travar a abertura da tela
+        fetchAuxiliares();
+      } catch (err) {
+        console.warn("Erro na inicialização do Apontamento:", err);
+      } finally {
+        setTimeout(() => {
+          setFocusedField('pneu');
+          if (inputRef.current) inputRef.current.focus();
+        }, 800);
+      }
+    };
+    init();
   }, []);
 
   const fetchAuxiliares = async () => {
     try {
       const setores = await auxService.listarSetores();
       const operadores = await auxService.listarOperadores();
-      setListaSetores(setores);
-      setListaOperadores(operadores);
+      setListaSetores(Array.isArray(setores) ? setores : []);
+      setListaOperadores(Array.isArray(operadores) ? operadores : []);
     } catch (error) {
-      console.warn('Erro ao carregar dados auxiliares:', error);
+      console.warn('Servidor offline ou erro de rede ao carregar auxiliares');
+      setListaSetores([]);
+      setListaOperadores([]);
     }
   };
 
@@ -67,16 +86,19 @@ export default function ApontamentoScreen() {
       const savedSetor = await AsyncStorage.getItem('default_setor');
       const savedOperador = await AsyncStorage.getItem('default_operador');
 
-      if (savedSetor) {
+      if (savedSetor && savedSetor !== 'undefined' && savedSetor !== 'null') {
         const sid = parseInt(savedSetor);
-        setIdSetor(sid);
+        if (!isNaN(sid)) setIdSetor(sid);
       }
 
-      if (savedOperador) setIdOperador(parseInt(savedOperador));
+      if (savedOperador && savedOperador !== 'undefined' && savedOperador !== 'null') {
+        const oid = parseInt(savedOperador);
+        if (!isNaN(oid)) setIdOperador(oid);
+      }
 
-      return !!savedSetor;
+      return true;
     } catch (error) {
-      console.error('Erro ao carregar padrões:', error);
+      console.warn('Erro ao carregar padrões do armazenamento local');
       return false;
     }
   };
@@ -138,9 +160,8 @@ export default function ApontamentoScreen() {
     try {
       const apontamentoAtivo = await producaoService.buscarExistente(pneuEncontrado.id, idSetor);
 
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-      const dateStr = now.toISOString().split('T')[0];
+      const timeStr = getNowTimeStr();
+      const dateStr = new Date().toISOString().split('T')[0];
 
       if (apontamentoAtivo && (apontamentoAtivo.status === 'I' || apontamentoAtivo.STATUS === 'I' || !apontamentoAtivo.status)) {
         // Já existe e status = "I" -> Finalizar
@@ -151,7 +172,7 @@ export default function ApontamentoScreen() {
         const dadosAtualizados = {
           ...apontamentoAtivo,
           id_pneu: pneuEncontrado.id,
-          codigo_barra: codigoBarra,
+          codbarra: codigoBarra,
           id_setor: parseInt(idSetor),
           id_operador: parseInt(operadorId),
           status: 'F',
@@ -176,11 +197,11 @@ export default function ApontamentoScreen() {
         // Não existe (ou é de outro ciclo) -> Iniciar automático
         const dadosNovo = {
           id_pneu: pneuEncontrado.id,
-          codigo_barra: codigoBarra,
+          codbarra: codigoBarra,
           id_setor: parseInt(idSetor),
           id_operador: parseInt(operadorId),
           status: 'I',
-          data_inicio: `${dateStr}T${timeStr}:00`,
+          inicio: `${dateStr}T${timeStr}:00`,
           termino: null,
           tempo: 0,
           id_retrabalho: 0,
@@ -277,10 +298,10 @@ export default function ApontamentoScreen() {
       const dateStr = new Date().toISOString().split('T')[0];
       const novoApontamento = {
         id_pneu: pneuEncontrado?.id,
-        codigo_barra: codigoBarra,
+        codbarra: codigoBarra,
         id_setor: parseInt(idSetor),
         id_operador: parseInt(idOperador),
-        data_inicio: `${dateStr}T${hIni || '00:00'}:00`,
+        inicio: `${dateStr}T${hIni || '00:00'}:00`,
         termino: horaTermino ? `${dateStr}T${horaTermino}:00` : null,
         tempo: parseFloat(tempo) || 0,
         id_retrabalho: 0,
@@ -290,9 +311,9 @@ export default function ApontamentoScreen() {
       Alert.alert('Sucesso', 'Apontamento registrado com sucesso!');
       setCodigoBarra('');
       setClienteNome('');
-      const now = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-      setHoraInicio(now);
-      setHoraTermino(now);
+      const nowStr = getNowTimeStr();
+      setHoraInicio(nowStr);
+      setHoraTermino(nowStr);
       if (inputRef.current) inputRef.current.focus();
     } catch (error) {
       Alert.alert('Erro', 'Ocorreu um erro ao registrar o apontamento.');
@@ -323,16 +344,15 @@ export default function ApontamentoScreen() {
     setLoading(true);
     try {
       const dateStr = new Date().toISOString().split('T')[0];
-      const now = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-      const fin = now;
+      const fin = getNowTimeStr();
       const duracao = calcularTempoMinutos(horaInicio, fin);
 
       const dadosAtualizados = {
         id_pneu: pneuEncontrado?.id,
-        codigo_barra: codigoBarra,
+        codbarra: codigoBarra,
         id_setor: parseInt(idSetor),
         id_operador: parseInt(idOperador),
-        data_inicio: `${dateStr}T${horaInicio}:00`,
+        inicio: `${dateStr}T${horaInicio}:00`,
         termino: `${dateStr}T${fin}:00`,
         tempo: duracao,
       };
@@ -605,9 +625,12 @@ export default function ApontamentoScreen() {
         </View>
       </Modal>
 
-      {/* Modal Scanner */}
       <Modal visible={scanning} animationType="slide">
-        <CameraView style={{ flex: 1 }} onBarcodeScanned={handleScan} />
+        {Camera.CameraView ? (
+          <Camera.CameraView style={{ flex: 1 }} onBarcodeScanned={handleScan} />
+        ) : (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text>Câmera Indisponível</Text></View>
+        )}
         <TouchableOpacity style={styles.closeBtn} onPress={() => setScanning(false)}>
           <Text style={styles.closeBtnText}>Cancelar</Text>
         </TouchableOpacity>

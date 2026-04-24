@@ -2,7 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const api = axios.create({
-  timeout: 10000,
+  timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -16,7 +16,7 @@ api.interceptors.request.use(
       const savedIp = await AsyncStorage.getItem('server_ip');
       const savedPort = await AsyncStorage.getItem('server_port');
       
-      const ip = savedIp || '192.168.15.99'; 
+      const ip = savedIp || '192.168.15.98'; 
       const port = savedPort || '8082';
 
       let baseURL;
@@ -33,7 +33,7 @@ api.interceptors.request.use(
       return config;
     } catch (error) {
       console.error('Erro ao recuperar configurações de IP:', error);
-      config.baseURL = 'http://192.168.15.99:8082'; // fallback local
+      config.baseURL = 'http://192.168.15.98:8082'; // fallback local
       return config;
     }
   },

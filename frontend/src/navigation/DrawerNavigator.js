@@ -66,6 +66,7 @@ export default function DrawerNavigator() {
   const { colors } = useTheme();
   return (
     <Drawer.Navigator 
+      initialRouteName="Apontamento"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
         headerStyle: { backgroundColor: colors.surface },
@@ -74,14 +75,14 @@ export default function DrawerNavigator() {
         drawerInactiveTintColor: colors.textSecondary,
       }}
     >
+      <Drawer.Screen name="Apontamento" component={ApontamentoScreen} options={{ 
+        drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="gesture-tap" color={color} size={size} />
+      }} />
       <Drawer.Screen name="Dashboard" component={DashboardScreen} options={{ 
         drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="view-dashboard" color={color} size={size} />
       }} />
       <Drawer.Screen name="Localização" component={LocalizacaoScreen} options={{ 
         drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="map-marker-radius" color={color} size={size} />
-      }} />
-      <Drawer.Screen name="Apontamento" component={ApontamentoScreen} options={{ 
-        drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="gesture-tap" color={color} size={size} />
       }} />
       <Drawer.Screen name="Avaliação" component={AvaliacaoScreen} options={{ 
         drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="file-document-check-outline" color={color} size={size} />

@@ -24,13 +24,13 @@ try:
     # Testar conexão imediatamente
     with engine.connect() as conn:
         conn.execute(text("SELECT 1"))
-        print("✅ Database connection established successfully!")
+        print("[SUCCESS] Database connection established successfully!")
     
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     Base = declarative_base()
 except Exception as e:
     import traceback
-    print(f"❌ Failed to connect to the database!")
+    print("[ERROR] Failed to connect to the database!")
     print(f"Error Type: {type(e).__name__}")
     print(f"Details: {str(e)}")
     # traceback.print_exc() # Descomente para log completo no console

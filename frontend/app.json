@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "MobRecap",
+    "name": "Mobcap",
     "slug": "mobcap",
     "version": "1.0.2",
     "orientation": "portrait",
@@ -48,14 +48,14 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler": true
+      "reactCompiler": false
     },
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "d132b466-a376-4fab-8ee9-1943cb2916c9"
+        "projectId": "2633abc5-34f9-42fe-8d39-f4fd3b1af1a5"
       }
     },
-    "owner": "mobrecap.dbnet"
+    "owner": "suportedbnet"
   }
 }

@@ -117,19 +117,39 @@ export default function LocalizacaoScreen() {
         {pneuInfo && !loading && (
           <View style={styles.resultsContainer}>
             <View style={[styles.infoCard, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-              <View style={styles.infoRow}>
-                <Text style={[styles.infoLabel, { color: colors.textSecondary }]}>Cliente:</Text>
-                <Text style={[styles.infoValue, { color: colors.text, textAlign: 'right' }]}>{pneuInfo.nome_cliente || 'Não informado'}</Text>
-              </View>
-              <View style={[styles.infoRow, { marginBottom: 0 }]}>
-                <View style={{ flexDirection: 'row', flex: 1 }}>
-                  <Text style={[styles.infoLabel, { color: colors.textSecondary }]}>Num.OS: </Text>
-                  <Text style={[styles.infoValue, { color: colors.text, textAlign: 'left' }]}>{pneuInfo.numos || 'N/A'}</Text>
+              {/* HEADER IDENTIFICAÇÃO */}
+              <View style={styles.cardHeader}>
+                <MaterialCommunityIcons name="tire" size={28} color={colors.primary} />
+                <View style={{ marginLeft: 12, flex: 1 }}>
+                  <Text style={[styles.customerLabel, { color: colors.textSecondary }]}>CLIENTE</Text>
+                  <Text style={[styles.customerName, { color: colors.text }]}>{pneuInfo.nome_cliente || 'NÃO INFORMADO'}</Text>
+                  <Text style={[styles.productDesc, { color: colors.primary }]}>{pneuInfo.produto_desc}</Text>
                 </View>
-                <View style={{ flexDirection: 'row' }}>
-                  <Text style={[styles.infoLabel, { color: colors.textSecondary }]}>Status: </Text>
-                  <Text style={[styles.infoValue, { color: pneuInfo.statuspro ? colors.primary : '#DC3545', fontWeight: 'bold', textAlign: 'right' }]}>
-                    {pneuInfo.statuspro ? 'Em produção' : 'Encerrado'}
+              </View>
+
+              <View style={styles.divider} />
+
+              {/* GRID DE INFORMAÇÕES */}
+              <View style={styles.infoGrid}>
+                <View style={styles.gridItem}>
+                  <Text style={[styles.gridLabel, { color: colors.textSecondary }]}>NUM. OS</Text>
+                  <Text style={[styles.gridValue, { color: colors.text }]}>{pneuInfo.numos || '---'}</Text>
+                </View>
+                <View style={styles.gridItem}>
+                  <Text style={[styles.gridLabel, { color: colors.textSecondary }]}>ENTRADA</Text>
+                  <Text style={[styles.gridValue, { color: colors.text }]}>{formatData(pneuInfo.dataentrada)}</Text>
+                </View>
+              </View>
+
+              <View style={styles.infoGrid}>
+                <View style={styles.gridItem}>
+                  <Text style={[styles.gridLabel, { color: colors.textSecondary }]}>VALOR OS</Text>
+                  <Text style={[styles.gridValue, { color: colors.text }]}>R$ {pneuInfo.vrtotal_os || '0,00'}</Text>
+                </View>
+                <View style={styles.gridItem}>
+                  <Text style={[styles.gridLabel, { color: colors.textSecondary }]}>STATUS</Text>
+                  <Text style={[styles.gridValue, { color: pneuInfo.statuspro ? colors.primary : '#DC3545', fontWeight: 'bold' }]}>
+                    {pneuInfo.statuspro ? 'EM PRODUÇÃO' : 'ENCERRADO'}
                   </Text>
                 </View>
               </View>
@@ -217,19 +237,59 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   infoCard: {
-    paddingVertical: 15,
-    paddingHorizontal: 18,
-    borderRadius: 15,
+    padding: 20,
+    borderRadius: 20,
     borderWidth: 1,
-    elevation: 3,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
-  infoRow: {
+  cardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  customerLabel: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    letterSpacing: 1,
+  },
+  customerName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 2,
+  },
+  productDesc: {
+    fontSize: 14,
+    fontWeight: '600',
+    marginTop: 2,
+    textTransform: 'uppercase',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: 'rgba(150, 150, 150, 0.2)',
+    marginVertical: 15,
+  },
+  infoGrid: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 8,
+    marginBottom: 15,
   },
-  infoLabel: { fontSize: 16, fontWeight: '500' },
-  infoValue: { fontSize: 16, flex: 1, marginLeft: 5 },
+  gridItem: {
+    flex: 1,
+  },
+  gridLabel: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+    marginBottom: 4,
+  },
+  gridValue: {
+    fontSize: 15,
+    fontWeight: '600',
+  },
   
   historyContainer: {
     marginTop: 30,
