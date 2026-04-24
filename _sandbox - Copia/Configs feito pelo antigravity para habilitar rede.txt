@@ -1,0 +1,27 @@
+Aqui está o resumo técnico das configurações que realizamos para garantir que o sistema MobCap funcione perfeitamente em rede (PC-Servidor, PCclente e Celular-Android):
+
+### **1. Configuração do Servidor (Backend)**
+*   **Host de Escuta:** Alteramos a inicialização do `uvicorn` para usar o host **`0.0.0.0`** (em vez de `127.0.0.1`). Isso permite que o servidor aceite conexões de qualquer aparelho na mesma rede Wi-Fi/Ethernet.
+*   **Acesso ao Banco (Firebird):** Mudamos o endereço interno do banco de dados de `localhost` para **`127.0.0.1`** no arquivo `database.py`. No Windows, o Firebird 3.0 pode falhar ao resolver o nome "localhost" via IPv6, e o IP fixo garante a conexão estável.
+*   **Estabilidade:** Adicionamos o parâmetro `pool_pre_ping=True` no SQLAlchemy para que o servidor verifique se a conexão com o banco está "viva" antes de cada consulta, evitando travamentos.
+
+### **2. Configuração de Rede e Segurança (Ambiente Windows)**
+*   **Firewall do Windows:** Criamos uma regra de entrada explícita para a **Porta 8000**. Sem isso, o Windows bloqueia qualquer tentativa de conexão vinda de fora do próprio computador.
+*   **Perfil de Rede:** Verificamos que a rede do computador está configurada como **"Particular"** (ou Privada), o que é essencial para que o Windows permita o compartilhamento de serviços na rede local.
+
+### **3. Configuração do Aplicativo (Frontend - Android)**
+*   **Permissão de Tráfego HTTP (Cleartext):** Por padrão, o Android bloqueia conexões `http://` (sem o S). Para resolver isso, realizamos dois passos:
+    1.  Adicionamos `"usesCleartextTraffic": true` no `app.json`.
+    2.  Instalamos e configuramos o plugin **`expo-build-properties`** para forçar essa permissão durante a geração do APK.
+*   **Conectividade Dinâmica:** Implementamos lógica com `AsyncStorage` que permite ao usuário digitar o IP do servidor (`192.168.15.98`) diretamente no aplicativo, sem precisar de um novo build caso o IP do servidor mude futuramente.
+
+### **4. Ferramentas de Manutenção**
+*   **Script de Build:** Criamos o arquivo **`gerar_apk.bat`** que automatiza a geração do aplicativo usando o Expo EAS, garantindo que todas as permissões acima sejam incluídas corretamente no arquivo final.
+*   **Diagnóstico:** Melhoramos as mensagens de erro no aplicativo para diferenciar falhas de rede de bloqueios de segurança do Android.
+
+---
+
+> [!TIP]
+> **Dica de Ouro:** Se um dia o servidor parar de conectar novamente, o primeiro passo é verificar se o IP do seu computador mudou (usando o comando `ipconfig`) e atualizar esse novo IP na tela de **Configurações** do celular.
+
+**O sistema agora está pronto para uso em ambiente de produção local! Se precisar de qualquer outra funcionalidade ou ajuste, é só chamar.**

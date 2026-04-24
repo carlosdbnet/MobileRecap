@@ -31,6 +31,14 @@ class SetorBase(BaseModel):
     descricao: Optional[str] = None
     sequencia: Optional[int] = None
     ativo: Optional[bool] = True
+    avaliacao: Optional[bool] = False
+    falha: Optional[bool] = False
+    consumomp: Optional[bool] = False
+    faturamento: Optional[bool] = False
+    expedicao: Optional[bool] = False
+    supervisao: Optional[bool] = False
+    sopassagem: Optional[bool] = False
+    userlan: Optional[str] = None
 
 class SetorCreate(SetorBase):
     pass
@@ -43,7 +51,11 @@ class OperadorBase(BaseModel):
     codigo: str
     nome: Optional[str] = None
     id_setor: Optional[int] = None
+    id_depto: Optional[int] = None
+    codset: Optional[str] = None
+    coddep: Optional[str] = None
     ativo: Optional[bool] = True
+    userlan: Optional[str] = None
 
 class OperadorCreate(OperadorBase):
     pass
@@ -99,12 +111,16 @@ class TipoNota(TipoNotaBase):
     id: int
 
 class ServicoBase(BaseModel):
-    codservico: Optional[str] = None
+    codigo: Optional[str] = None
     descricao: Optional[str] = None
-    medida: Optional[str] = None
-    desenho: Optional[str] = None
-    piso: Optional[str] = None
+    id_recap: Optional[int] = None
+    id_medida: Optional[int] = None
+    id_desenho: Optional[int] = None
+    id_produto: Optional[int] = None
+    grupo: Optional[str] = None
+    valor: Optional[Decimal] = 0
     ativo: Optional[bool] = True
+    userlan: Optional[str] = None
 
 class ServicoCreate(ServicoBase):
     pass
@@ -150,12 +166,17 @@ class PneuBase(BaseModel):
     id_contato: Optional[int] = None
     id_medida: Optional[int] = None
     id_desenho: Optional[int] = None
+    id_recap: Optional[int] = None
+    id_servico: Optional[int] = None
+    id_produto: Optional[int] = None
+    id_vendedor: Optional[int] = None
     codbarra: Optional[str] = None
     numserie: Optional[str] = None
     numfogo: Optional[str] = None
     statuspro: Optional[bool] = True
     statusfat: Optional[bool] = False
     placa: Optional[str] = None
+    userlan: Optional[str] = None
 
 class PneuCreate(PneuBase):
     pass
@@ -172,12 +193,16 @@ class ProducaoBase(BaseModel):
     id_setor: int
     id_operador: int
     id_retrabalho: Optional[int] = 0
+    id_recap: Optional[int] = None
+    id_maquina: Optional[int] = None
+    id_proximo: Optional[int] = None
     codbarra: Optional[str] = None
     status: Optional[str] = "I"
     inicio: Optional[datetime] = None
     termino: Optional[datetime] = None
     tempo: Optional[Decimal] = 0
     obs: Optional[str] = None
+    userlan: Optional[str] = None
 
 class ProducaoCreate(ProducaoBase):
     pass

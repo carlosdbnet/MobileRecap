@@ -175,9 +175,11 @@ export default function ApontamentoScreen() {
           codbarra: codigoBarra,
           id_setor: parseInt(idSetor),
           id_operador: parseInt(operadorId),
+          id_recap: pneuEncontrado.id_recap || apontamentoAtivo.id_recap,
           status: 'F',
           termino: `${dateStr}T${timeStr}:00`,
           tempo: duracao,
+          userlan: 'MOBILE',
         };
 
         try {
@@ -200,11 +202,15 @@ export default function ApontamentoScreen() {
           codbarra: codigoBarra,
           id_setor: parseInt(idSetor),
           id_operador: parseInt(operadorId),
+          id_recap: pneuEncontrado.id_recap || 0,
+          id_maquina: 0,
+          id_proximo: 0,
           status: 'I',
           inicio: `${dateStr}T${timeStr}:00`,
           termino: null,
           tempo: 0,
           id_retrabalho: 0,
+          userlan: 'MOBILE',
         };
 
         try {
@@ -301,10 +307,14 @@ export default function ApontamentoScreen() {
         codbarra: codigoBarra,
         id_setor: parseInt(idSetor),
         id_operador: parseInt(idOperador),
+        id_recap: pneuEncontrado?.id_recap || 0,
+        id_maquina: 0,
+        id_proximo: 0,
         inicio: `${dateStr}T${hIni || '00:00'}:00`,
         termino: horaTermino ? `${dateStr}T${horaTermino}:00` : null,
         tempo: parseFloat(tempo) || 0,
         id_retrabalho: 0,
+        userlan: 'MOBILE',
       };
 
       await producaoService.criar(novoApontamento);

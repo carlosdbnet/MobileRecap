@@ -36,7 +36,7 @@ function CustomDrawerContent(props) {
         <DrawerContentScrollView {...props} style={{ flex: 1 }}>
           <View style={[styles.drawerHeader, { backgroundColor: colors.surface, borderBottomColor: colors.border }]}>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.drawerTitle, { color: colors.primary }]}>MobCap</Text>
+              <Text style={[styles.drawerTitle, { color: colors.primary }]}>Mobcap</Text>
               <Text style={[styles.drawerSubtitle, { color: colors.textSecondary }]}>Gestão e Produção</Text>
             </View>
             <Image 

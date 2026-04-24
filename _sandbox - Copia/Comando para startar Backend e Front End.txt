@@ -1,0 +1,5 @@
+CD \SISTEMA\MOBCAP
+ backend\venv\Scripts\python backend\main.py 
+
+CD \SISTEMA\MOBCAP\FRONTEND
+npx expo start --clear

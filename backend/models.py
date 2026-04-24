@@ -47,7 +47,12 @@ class Setor(Base):
     falha = Column(Boolean)
     consumomp = Column(Boolean)
     faturamento = Column(Boolean)
+    expedicao = Column(Boolean)
+    supervisao = Column(Boolean)
+    sopassagem = Column(Boolean)
     proxsetor = Column(String(10))
+    userlan = Column(String(20))
+    datalan = Column(TIMESTAMP)
 
 class Operador(Base):
     __tablename__ = "operador"
@@ -56,9 +61,14 @@ class Operador(Base):
     nome = Column(String(80))
     cargo = Column(String(10))
     id_setor = Column(Integer, ForeignKey("setor.id"))
+    id_depto = Column(Integer)
+    codset = Column(String(10))
+    coddep = Column(String(10))
     ativo = Column(Boolean)
     qmeta = Column(Integer)
     valor = Column(Numeric(15, 2))
+    userlan = Column(String(20))
+    datalan = Column(TIMESTAMP)
     
     setor = relationship("Setor")
 
@@ -97,13 +107,14 @@ class Servico(Base):
     id_recap = Column(Integer)
     id_medida = Column(Integer)
     id_desenho = Column(Integer)
-    codservico = Column(String(30))
+    id_produto = Column(Integer)
+    codigo = Column(String(30))
     descricao = Column(String(100))
-    medida = Column(String(20))
-    desenho = Column(String(20))
-    codrecap = Column(String(5))
-    piso = Column(String(3))
+    grupo = Column(String(20))
+    valor = Column(Numeric(15, 2))
     ativo = Column(Boolean)
+    userlan = Column(String(20))
+    datalan = Column(TIMESTAMP)
 
 class OrdemServico(Base):
     __tablename__ = "ordemservico"
@@ -147,11 +158,15 @@ class Pneu(Base):
     __tablename__ = "pneu"
     id = Column(Integer, primary_key=True, index=True)
     id_ordem = Column(Integer)
-    id_fatura = Column(Integer) # Antes id_nota
+    id_fatura = Column(Integer) 
     id_empresa = Column(Integer)
     id_contato = Column(Integer)
     id_medida = Column(Integer)
     id_desenho = Column(Integer)
+    id_recap = Column(Integer)
+    id_servico = Column(Integer)
+    id_produto = Column(Integer)
+    id_vendedor = Column(Integer)
     codbarra = Column(String(15))
     numserie = Column(CHAR(20))
     numfogo = Column(String(10))
@@ -168,6 +183,7 @@ class Pneu(Base):
     valornfe = Column(Numeric(15, 2))
     id_laudo = Column(Integer)
     id_exped = Column(Integer)
+    userlan = Column(CHAR(20))
     datalan = Column(TIMESTAMP)
 
 class Producao(Base):
@@ -177,12 +193,16 @@ class Producao(Base):
     id_setor = Column(Integer)
     id_operador = Column(Integer, nullable=False)
     id_retrabalho = Column(Integer, default=0)
+    id_recap = Column(Integer)
+    id_maquina = Column(Integer)
+    id_proximo = Column(Integer)
     codbarra = Column(String(30))
     status = Column(String(1))
     inicio = Column(TIMESTAMP)
     termino = Column(TIMESTAMP)
     tempo = Column(Numeric(15, 2))
     obs = Column(String(100))
+    userlan = Column(String(20))
     datalan = Column(TIMESTAMP, server_default=func.now())
 
 class Avaliacao(Base):

@@ -1,0 +1,15 @@
+npx eas logout
+
+npx eas login
+
+cd\sistema
+
+npm install -g eas-cli  (Instalacao Global para exe. de qq pasta)
+
+Abra o arquivo do frontend
+
+  app.json
+.
+Apague a linha 57: "projectId": "7c8dee88-d443-4cfa-8363-ff8a80b4569a".
+
+npx eas project:init

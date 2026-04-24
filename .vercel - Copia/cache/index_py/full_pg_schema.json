@@ -1,0 +1,7354 @@
+{
+  "AREA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODAREA",
+      "type": "character varying",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "ATIVIDADE": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODATIV",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "DESENHO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "LARGURA",
+      "type": "character varying",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "BONUS": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODBON",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "DATAINI",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAVAL",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "OPERADOR": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODFUN",
+      "type": "character",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "NOME",
+      "type": "character",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "CARGO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODSET",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODDEP",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "QMETA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "ID_DEPTO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_SETOR",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    }
+  ],
+  "CIDADE": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NOME",
+      "type": "character",
+      "length": 100,
+      "nullable": false
+    },
+    {
+      "name": "ESTADO",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODIBGE",
+      "type": "character varying",
+      "length": 7,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "GARANTIA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_PNEU",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMLAUDO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATASOL",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character varying",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCNPJ",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "CODREG",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODSERVICO",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "MEDIDA",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DESENHO",
+      "type": "character",
+      "length": 6,
+      "nullable": true
+    },
+    {
+      "name": "CODSERV",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "MARCA",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "DOT",
+      "type": "character varying",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "NUMSERIE",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "NUMFOGO",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DORIGINAL",
+      "type": "character",
+      "length": 6,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "BORRACHA",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "CARCACA",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "QREFORMA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PLACA",
+      "type": "character varying",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "USO",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "GARANTIA",
+      "type": "character varying",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CODRESP",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "ESTADO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DEFEITO",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "CAUSA",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "DATAPROD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAEXA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "RESPGARA",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "LAUDO",
+      "type": "character varying",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "MOTIVO",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "TIPOREPO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "PERCDESG",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PERCREPO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PERCREFOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SERVREPO",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "VALREP",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PISO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "NOTAREP",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "STATREP",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DATAREP",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "QREMANE",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ALEGACAO",
+      "type": "bytea",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "EXAMINADOR",
+      "type": "character varying",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "LAUDOFAB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PROFUNDIDADE",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "SERIENF",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "NUMNOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATAFAT",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USEREXA",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATARESUL",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOMSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "OBS2",
+      "type": "bytea",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATABXA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DOCBXA",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "STATUS",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "OBS",
+      "type": "bytea",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "MARCA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 50,
+      "nullable": false
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "COMISSAO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "PCOMISS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PDESCTO1",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMFXA1",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PDESCTO2",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMFXA2",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PDESCTO3",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMFXA3",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PDESCTO4",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMFXA4",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    }
+  ],
+  "CONTRATO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NUMCTR",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCGC",
+      "type": "character",
+      "length": 18,
+      "nullable": false
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODPLANO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATACON",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAVEN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "QUANT",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TEXTO",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "DEPTO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODDEP",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "MEDIDA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character",
+      "length": 15,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "DATACAD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "NOTA_PARCELA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_NOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "TIPODOCTO",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NUMDOCTO",
+      "type": "character",
+      "length": 15,
+      "nullable": false
+    },
+    {
+      "name": "NUMFAT",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "EMISSAO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VENCTO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VRFAT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VPAGO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALDOCTO",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VTERC",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VBONUS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCNPJ",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODBAN",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "NUMAGE",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "CODOPER",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODCLASS",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "CODREP",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODREG",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "PERCCOM",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCOMISS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ENDCOB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODCOB",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "STATFAT",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "SERIENF",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "NUMNOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "BANCOCH",
+      "type": "character varying",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "AGENCIACH",
+      "type": "character varying",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "CONTACH",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "NUMCHEQUE",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "CPFCNPJCH",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "EMITENTECH",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "DATAEMICH",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "NOTAFISCAL": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_CONTATO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_TRANSPO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "CNPJEMP",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "NUMFAT",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "SERIENF",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "NUMNOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCNPJ",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "ENDENT",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ENDCOB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPOCLI",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "TIPOFAT",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATAEMI",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAMOV",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODMSG",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PLANOPAG",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODREG",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODBAN",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "NUMAGE",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "CODTRANSP",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CGCTRANSP",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "NUMCONHEC",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALFRETE",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VICMFRETE",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALPROD",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VTABPROD",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VTABSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VDESCTO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALLIVR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TOTALFAT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "BASEISS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "BASEIPI",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VISENTO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VOUTRAS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRICM",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRIPI",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRISS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCUSTOCTB",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCUSTOGER",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VIR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VPIS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCOFIN",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VVISTA",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VPRAZO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VBONUS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCARCA",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VLAUDO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VREQUI",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CNPJREQ",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "PZMEDIO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ALIQISS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMPROD",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "QTMERC",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ESPECIE",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "MARCA",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "NUMIDENT",
+      "type": "character",
+      "length": 6,
+      "nullable": true
+    },
+    {
+      "name": "PESOBRU",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PESOLIQ",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "STATUS",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "MSG_NF",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "OBS_FAT",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CANHOTO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DATADIG",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CONSUMIDOR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CONTRIB",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DHIST",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "DOCORIGEM",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DTORIGEM",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "NFORIGEM",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "SEORIGEM",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "STATNFE",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "TIPOFRETE",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "UFDEST",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "UFORIG",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "VALNOTA",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "MOTIVOLIB",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLIB",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALIB",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "NUMCTR",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "TIPODIV",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "CHAVENFE",
+      "type": "character varying",
+      "length": 44,
+      "nullable": true
+    },
+    {
+      "name": "SERIERPS",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "NUMRPS",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "LOTERPS",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PROTOCOLO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "VDESCNF",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATACANHOTO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODVERIF",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "STATLIB",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CODHIST",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "PRODUTO",
+      "type": "character varying",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "ID_OS_OLIST",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "ORCITEM": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_ORC",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MEDIDA",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "MARCA",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "SERVICO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DESENHO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "NUMFOGO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DOT",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 150,
+      "nullable": true
+    },
+    {
+      "name": "QUANT",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VRTOT",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "ENVELOPE": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODENV",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "DATACAD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATABXA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "QPASSADA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "ESTADO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SIGLA",
+      "type": "character",
+      "length": 2,
+      "nullable": false
+    },
+    {
+      "name": "NOME",
+      "type": "character",
+      "length": 30,
+      "nullable": false
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "VENDEDOR_META": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODVEN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "ANO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MES",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VMETAFAT",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VFATREAL",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VMETACOMB",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VCOMBREAL",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "FABRICA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODFAB",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "FAIXACOM": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "GRUCOM",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "PLANTA",
+      "type": "character",
+      "length": 1,
+      "nullable": false
+    },
+    {
+      "name": "PCOM0",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES1",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM1",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES2",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM2",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES3",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM3",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES4",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM4",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES5",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM5",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM9",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "FALHA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODFALHA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "OBSERVACAO",
+      "type": "character varying",
+      "length": 250,
+      "nullable": true
+    },
+    {
+      "name": "CODSET",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "MSG_EMAIL",
+      "type": "character varying",
+      "length": 250,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "ORCAM": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMORC",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCNPJ",
+      "type": "character",
+      "length": 18,
+      "nullable": false
+    },
+    {
+      "name": "NOME",
+      "type": "character",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "RUA",
+      "type": "character",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "COMPLEMENTO",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "BAIRRO",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "CXPOSTAL",
+      "type": "character",
+      "length": 6,
+      "nullable": true
+    },
+    {
+      "name": "CEP",
+      "type": "character",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CIDADE",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "FONERES",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "FONECOM",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "FAX",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CONTATO",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "CELULAR",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "EMAIL1",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "EMAIL2",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "DATAORC",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VDESCTO",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VALORC",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "VALIDADE",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "CONDICAO",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "OBS",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "NOMERESP",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "FONERESP",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "PNEU_MPRIMA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_PNEU",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_PRODUTO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "QUANT",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VTOTAL",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODEMP",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQSRV",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODPROD",
+      "type": "character varying",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "PNEU_SERVICO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_PNEU",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_SERVICO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_NOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character varying",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQSRV",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODSERVICO",
+      "type": "character varying",
+      "length": 30,
+      "nullable": false
+    },
+    {
+      "name": "PISO",
+      "type": "character varying",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "QUANT",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRTOT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRTAB",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PZMEDIO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PDESCTO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMISS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CUSTOCTB",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CUSTOGER",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMTAB",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "STATPRO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DATAPRO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAFAT",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "SERIENF",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "NUMNOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CPFCGC",
+      "type": "character varying",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "UNIPRO",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "MEDIDA",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "DESENHO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "TIPOSERV",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODREG",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "FICHJA_PADRAO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODTABSERV",
+      "type": "character varying",
+      "length": 30,
+      "nullable": false
+    },
+    {
+      "name": "PISO",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "CODPROD",
+      "type": "character",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "QUANTMP",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "FATOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ORDEM",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "FICHA_TECNICA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_SERVICO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_FICHAPADRAO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODTABSERV",
+      "type": "character varying",
+      "length": 30,
+      "nullable": false
+    },
+    {
+      "name": "CODPROD",
+      "type": "character",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "QUANTMP",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "FATOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ORDEM",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "GRUPO_CONTATO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODGRU",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "GRUPO_PRODUTO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODGRU",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "PARAMETRO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODPARAM",
+      "type": "character",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "REFERENCIA",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "LOGERRO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MENSAGEM",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "LOGSIS": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MENSAGEM",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    }
+  ],
+  "BALANCO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NUMLOTE",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "DATABAL",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "STATUS",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "VTOTENT",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VTOTSAI",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "MAQUINA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODMAQ",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "SERVICO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_TIPOSERV",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_MEDIDA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_DESENHO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODSERVICO",
+      "type": "character varying",
+      "length": 30,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "MEDIDA",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "DESENHO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "TIPOSERV",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "VENDEDOR": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "APELIDO",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "NOME",
+      "type": "character",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "ENDERECO",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "CEP",
+      "type": "character",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CIDADE",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "FONE",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "FAX",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CPFCNPJ",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "INSCRICAO",
+      "type": "character",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "CARGO",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODAREA",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODREG",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "VINCULO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "ID_AREA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ID_REGIAO",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ID_VENDEDOR_OLIST",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "MOBOS": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "NUMMOB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATAOS",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CPFCGC",
+      "type": "character varying",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "INSCRICAO",
+      "type": "character",
+      "length": 14,
+      "nullable": true
+    },
+    {
+      "name": "NOME",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "RUA",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "NUMCASA",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "COMPLEMENTO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "BAIRRO",
+      "type": "character varying",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "CEP",
+      "type": "character varying",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CIDADE",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "FONE",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CELULAR",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CONTATO",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "E_MAIL",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "VTOTAL",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "QPNEU",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MSGMOB",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "STATUS",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "CONTATO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCNPJ",
+      "type": "character",
+      "length": 18,
+      "nullable": false
+    },
+    {
+      "name": "PESSOA",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "TIPODOC",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "RG",
+      "type": "character",
+      "length": 14,
+      "nullable": true
+    },
+    {
+      "name": "UFRG",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "INSCRICAO",
+      "type": "character",
+      "length": 14,
+      "nullable": true
+    },
+    {
+      "name": "INSCMUNICIPIO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CONTRIBUINTE",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CONSUMIDOR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "NOME",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "RAZAOSOCIAL",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "RUA",
+      "type": "character varying",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "NUMCASA",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "COMPLEMENTO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "BAIRRO",
+      "type": "character varying",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "CXPOSTAL",
+      "type": "character",
+      "length": 6,
+      "nullable": true
+    },
+    {
+      "name": "CEP",
+      "type": "character",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CIDADE",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "FONERES",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "FONECOM",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CONTATO_COM",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "CELULAR_COM",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CONTATO_FIN",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "CELULAR_FIN",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "EMAIL",
+      "type": "character",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "EMAILNFE",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "SITE",
+      "type": "character",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "DATANASCTO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "NOMEPAI",
+      "type": "character",
+      "length": 40,
+      "nullable": true
+    },
+    {
+      "name": "NOMEMAE",
+      "type": "character",
+      "length": 40,
+      "nullable": true
+    },
+    {
+      "name": "NOMECONJUGE",
+      "type": "character",
+      "length": 40,
+      "nullable": true
+    },
+    {
+      "name": "RGCONJUGE",
+      "type": "character",
+      "length": 14,
+      "nullable": true
+    },
+    {
+      "name": "NASCTOCONJUGE",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "SEXO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "ECIVIL",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CODPAIS",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "NOMEPAIS",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "DATAPRICOMPRA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAULTCOMPRA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "NUMCOMPRA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALPRICOMPRA",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALMAICOMPRA",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALULTCOMPRA",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "LIMICREDITO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PRAZOMAX",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DIAFAT",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATACAD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATASPC",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CONCEITO",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODTRANSP",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODATIV",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODREG",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODBAN",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "NUMAGE",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "CODGRU",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "OBS",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "REF_SPC",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "REF_FIN",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "REF_COM",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "REF_PROD",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "FLAGCLIENTE",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "FLAGFORNECEDOR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "FLAGTRANSPOTADOR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "FLAGCOLABORADOR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "FLAGVENDEDOR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "ID_CIDADE",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ID_AREA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ID_REGIAO",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ID_VENDEDOR",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ID_ATIVIDADE",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ID_CLIENTE_OLIST",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "PNEU": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_OS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_NOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_CONTATO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character varying",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODBARRA",
+      "type": "character varying",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "NUMNOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCNPJ",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "NUMCTR",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODBON",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "DATAOS",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAPRE",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAPRO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAFAT",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "MEDIDA",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DESENHO",
+      "type": "character varying",
+      "length": 12,
+      "nullable": true
+    },
+    {
+      "name": "TIPOSERV",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "PISO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODSERVICO",
+      "type": "character varying",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "MARCA",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "NUMSERIE",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "NUMFOGO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DOT",
+      "type": "character varying",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "PLACA",
+      "type": "character varying",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "DORIGINAL",
+      "type": "character varying",
+      "length": 12,
+      "nullable": true
+    },
+    {
+      "name": "QREFORMA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "QUANT",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRTOT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VTABSRV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PDESCTO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCARCA",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCUSTMP",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCUSTODESP",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CAUSAREC",
+      "type": "character varying",
+      "length": 11,
+      "nullable": false
+    },
+    {
+      "name": "USO",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "GARANTIA",
+      "type": "character varying",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CODRESP",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "ESTADO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "PRAZO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "STATPRO",
+      "type": "character varying",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "STATFAT",
+      "type": "character varying",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "OBS",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "VALNFE",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODCARCACA",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "CODACABADO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "REFMASTER",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DOTSRV",
+      "type": "character varying",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "DATAEXP",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ID_LAUDO",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "ID_EXPED",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "BANCO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODBAN",
+      "type": "character",
+      "length": 4,
+      "nullable": false
+    },
+    {
+      "name": "FANTASIA",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "RAZAOSOCIAL",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "ENDERECO",
+      "type": "character",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "CEP",
+      "type": "character",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CIDADE",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "CONTATO",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "FONE",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CNPJ",
+      "type": "character varying",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "PRECO_SERVICO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_TABPRECO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMTAB",
+      "type": "character varying",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "SEQTAB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODSERVICO",
+      "type": "character varying",
+      "length": 30,
+      "nullable": false
+    },
+    {
+      "name": "TIPOSERV",
+      "type": "character varying",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "MEDIDA",
+      "type": "character varying",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "DESENHO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "PISO",
+      "type": "character varying",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "MINIMO",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODGRU",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATACAD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "OS": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPOFAT",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMCTR",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCGC",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "ENDENT",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ENDCOB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DIASPRE",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATAOS",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAPRE",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAFAT",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAENT",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "NOTAENT",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "FRETE",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CODTRANSP",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "UNIPRO",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODBAN",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "NUMAGE",
+      "type": "character",
+      "length": 4,
+      "nullable": true
+    },
+    {
+      "name": "CODCFO",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODMSG",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODPLANO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALPROD",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALLIVR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VBONUS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCARCA",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VCONV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VREQUI",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALFRETE",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TOTALFAT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VDESCPROD",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VDESCSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "QBONUS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PDESCPROD",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PDESCSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMPROD",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PLACA",
+      "type": "character varying",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CARCACA",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CGCREQ",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "ACABADO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "MSG_NF",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "OBS_FAT",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DOCORIGEM",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "STATLIB",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DATALIB",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLIB",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "SENHALIB",
+      "type": "character",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "MOTIVOLIB",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "SERIENT",
+      "type": "character varying",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "EMITNFE",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "STATNFE",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "NUMMOB",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "SOMENTEPAR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "MUDARDESENHO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "FORMAPG",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "UNIFAT",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "DATADIG",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERETIQ",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "BORRACHEIRO",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "VSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PLANTA",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "STATUS",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "PLANOPAG": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODPLANO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "FORMAPAG",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "NUMPARC",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ACRESCIMO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DESCONTO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DATACAD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "MOBILE",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "PRECOCLI": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CPFCGC",
+      "type": "character",
+      "length": 18,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NUMCTR",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMTAB",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "PCOM1",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM2",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM3",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM4",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM5",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "PRECOCOM": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMTAB",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "ID_SERVICO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOM0",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES1",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM1",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES2",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM2",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES3",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM3",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES4",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM4",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PDES5",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM5",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOM9",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "CONTATO_ENDERECO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_CONTATO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "RUA",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "NUMCASA",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "COMPLEMENTO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "BAIRRO",
+      "type": "character varying",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "CEP",
+      "type": "character varying",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CIDADE",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "FONE",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "FAX",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CELULAR",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CXPOSTAL",
+      "type": "character",
+      "length": 6,
+      "nullable": true
+    },
+    {
+      "name": "CONTATO",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "E_MAIL",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "INSCRICAO",
+      "type": "character",
+      "length": 14,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "PRECOTAB": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "NUMTAB",
+      "type": "character varying",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "INIVALIDADE",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "FIMVALIDADE",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "MSG",
+      "type": "text",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "DESPVENDEDOR": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_VENDEDOR",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_VEICULO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 200,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "PLACA",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "TIPO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "QLITRO",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VLITRO",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VRTOT",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "KMANTER",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "KMATUAL",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "PRODUTO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODPROD",
+      "type": "character",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "CODATUAL",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "CODANTER",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "NUMFAB",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "CODGRU",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODSUB",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CODFAB",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "UNIDADE",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "EMBALAG",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "QVOLUME",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PESOBRU",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PESOLIQ",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PCOMPRA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "UCOMPRA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PVENDA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "UVENDA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "UATPRECO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "GRUDESCTO",
+      "type": "character varying",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "PRECOVEN",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PRECOREP",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ABCDEM",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "ABCVAL",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CLASSEICM",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODCEST",
+      "type": "character varying",
+      "length": 8,
+      "nullable": true
+    },
+    {
+      "name": "CODGTIN",
+      "type": "character varying",
+      "length": 14,
+      "nullable": true
+    },
+    {
+      "name": "IMAGEM",
+      "type": "character",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "DESTINO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DATACAD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATASUB",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAPRO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAVAL",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PROMOCAO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "PRECOPRO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MARGEM",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MINIMO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MAXIMO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODNCM",
+      "type": "character varying",
+      "length": 8,
+      "nullable": true
+    },
+    {
+      "name": "PESOMT",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODTABSERV",
+      "type": "character varying",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "IPICENQ",
+      "type": "character varying",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "ID_PRODUTO_OLIST",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "NOTA_SERVICO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_NOTA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "ID_ORIGEM",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "ID_NUMERO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_SEQLAN",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODSERV",
+      "type": "character",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 255,
+      "nullable": true
+    },
+    {
+      "name": "CODSIT",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "ALIQDESC",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ALIQICM",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "BASEICM",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VISENTO",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VOUTRAS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "QUANT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRTAB",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VDESC",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRTOT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRICM",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VRISS",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODCFO",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "BASEISS",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VDESCNF",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PCOMSERV",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "EMPRESA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "CNPJ",
+      "type": "character",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "NOMEFANTASIA",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "RAZAOSOCIAL",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "ENDERECO",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "NUMCASA",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "BAIRRO",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "CEP",
+      "type": "character",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CIDADE",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "INSCRICAO",
+      "type": "character",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "TELEFONE",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CXPOSTAL",
+      "type": "character",
+      "length": 6,
+      "nullable": true
+    },
+    {
+      "name": "EMAIL",
+      "type": "character",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "INSCMUNICIPIO",
+      "type": "character",
+      "length": 12,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "IDCLIENT",
+      "type": "character varying",
+      "length": 255,
+      "nullable": true
+    },
+    {
+      "name": "IDSECRET",
+      "type": "character varying",
+      "length": 255,
+      "nullable": true
+    },
+    {
+      "name": "CODAUTH2",
+      "type": "character varying",
+      "length": 255,
+      "nullable": true
+    },
+    {
+      "name": "TOKEN",
+      "type": "character varying",
+      "length": 8000,
+      "nullable": true
+    }
+  ],
+  "REGIAO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODREG",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "NOME",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "ID_AREA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATACAD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "SETOR": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODSET",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "SEQUENCIA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "TEMPOMEDIO",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "TEMPOMINIMO",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "QMETA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "PROXSETOR",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "SOPASSAGEM",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "EXAINICIAL",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "EXAFINAL",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "FALHA",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "AVALIACAO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CONSUMOMP",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "EXPEDICAO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "SUPERVISAO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "SUBGRUPO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODSUB",
+      "type": "character",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "TABGERAL": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 3,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "USUARIO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character",
+      "length": 20,
+      "nullable": false
+    },
+    {
+      "name": "NOME",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "SENHA",
+      "type": "character",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "FUNCAO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "GRUPO",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODEMP",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODFUN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "CODSET",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    }
+  ],
+  "USUARIO_PERMISSAO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_USUARIO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ROTINA",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "EXECUTAR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "INCLUIR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "ALTERAR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "EXCLUIR",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "VEICULO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "PLACA",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "CODVEN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "GRUPO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "TIPO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "COMB",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "PLAQUETA",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DATACAD",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "CODMOD",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "RENAVAM",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "CHASSI",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "ANO",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "ALIENADO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "BANCOFIN",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "SINISTRO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "SEGURADORA",
+      "type": "character varying",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "ANTT",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    }
+  ],
+  "BALANCO_PRODUTO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_LOTE",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_PRODUTO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODPROD",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "QUANT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VUNIT",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VTOTAL",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SINAL",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "CONTATO_INFO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_CONTATO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATAINF",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "bytea",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERCAD",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "CONTATO_EMAIL": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_CONTATO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "TIPO",
+      "type": "character varying",
+      "length": 50,
+      "nullable": false
+    },
+    {
+      "name": "EMAIL",
+      "type": "character varying",
+      "length": 100,
+      "nullable": false
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "MOBPNEU": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_MOBOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODVEN",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "NUMMOB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQMOB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODTABSERV",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "CODSERV",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "MEDIDA",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DEXECUTAR",
+      "type": "character varying",
+      "length": 12,
+      "nullable": true
+    },
+    {
+      "name": "PISO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "QREFORMA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "MARCA",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "NUMSERIE",
+      "type": "character",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "NUMFOGO",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DOT",
+      "type": "character varying",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "DORIGINAL",
+      "type": "character varying",
+      "length": 12,
+      "nullable": true
+    },
+    {
+      "name": "USO",
+      "type": "character",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "GARANTIA",
+      "type": "character varying",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "OBS",
+      "type": "character varying",
+      "length": 80,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "EXPEDICAO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_PNEU",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_OS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "DATA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "HORA",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "PNEU_FALHA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_PNEU",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODFALHA",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODSET",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "CODFUN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "MOTIVO",
+      "type": "character varying",
+      "length": 255,
+      "nullable": true
+    },
+    {
+      "name": "DATA",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "VALOR",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "PRODUCAO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_PNEU",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "ID_SETOR",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODBARRA",
+      "type": "character varying",
+      "length": 30,
+      "nullable": false
+    },
+    {
+      "name": "CODRETRAB",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODEMP",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "NUMOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SEQOS",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODSET",
+      "type": "character varying",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "CODFUN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "SEQFAB",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "STATUS",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "TIPOSERV",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "DESENHO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "PISO",
+      "type": "character",
+      "length": 3,
+      "nullable": true
+    },
+    {
+      "name": "CODMAQ",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAINI",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAFIM",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "DATAPRO",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "TEMPO",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ESTADO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "GARANTIA",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "MASTER",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "CODRESP",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "CAUSAREC",
+      "type": "character varying",
+      "length": 11,
+      "nullable": true
+    },
+    {
+      "name": "RESULTADO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "RAIO",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PERIMETRO",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CODCARCACA",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "CODACABADO",
+      "type": "character varying",
+      "length": 20,
+      "nullable": true
+    },
+    {
+      "name": "ENVELOPE",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "INNLOP",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "SACOAR",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "PROTETOR",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "BICO",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "CICLO",
+      "type": "integer",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ESTCARCA",
+      "type": "character varying",
+      "length": 5,
+      "nullable": true
+    },
+    {
+      "name": "TEXTURA",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "VALTRAB",
+      "type": "numeric",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "OBS",
+      "type": "character varying",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "PROXSET",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character varying",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    }
+  ],
+  "TIPODOCTO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character",
+      "length": 5,
+      "nullable": false
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 30,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "TIPOOPERACAO": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "SINAL",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    },
+    {
+      "name": "DESCRICAO",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ],
+  "TRANSPORTADORA": [
+    {
+      "name": "ID",
+      "type": "integer",
+      "length": null,
+      "nullable": false
+    },
+    {
+      "name": "CODIGO",
+      "type": "character",
+      "length": 10,
+      "nullable": false
+    },
+    {
+      "name": "NOME",
+      "type": "character",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "ENDERECO",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "CEP",
+      "type": "character",
+      "length": 9,
+      "nullable": true
+    },
+    {
+      "name": "CIDADE",
+      "type": "character",
+      "length": 60,
+      "nullable": true
+    },
+    {
+      "name": "UF",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "FONE",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "FAX",
+      "type": "character",
+      "length": 17,
+      "nullable": true
+    },
+    {
+      "name": "CPFCNPJ",
+      "type": "character varying",
+      "length": 18,
+      "nullable": true
+    },
+    {
+      "name": "INSCRICAO",
+      "type": "character",
+      "length": 15,
+      "nullable": true
+    },
+    {
+      "name": "PLACAVEIC",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "UFPLACA",
+      "type": "character",
+      "length": 2,
+      "nullable": true
+    },
+    {
+      "name": "USERLAN",
+      "type": "character",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "DATALAN",
+      "type": "timestamp without time zone",
+      "length": null,
+      "nullable": true
+    },
+    {
+      "name": "ATIVO",
+      "type": "character",
+      "length": 1,
+      "nullable": true
+    }
+  ]
+}

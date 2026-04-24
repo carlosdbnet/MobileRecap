@@ -1,0 +1,6 @@
+0000000000000000000000000000000000000000 83f191816d12338c4810d872d0fb2bfe55aeb7f7 carlosdbnet <carlos.dbnet@gmail.com> 1775081318 -0300	commit (initial): Initial commit: MobCap Backend (FastAPI/Neon) and Frontend (Expo)
+83f191816d12338c4810d872d0fb2bfe55aeb7f7 83f191816d12338c4810d872d0fb2bfe55aeb7f7 carlosdbnet <carlos.dbnet@gmail.com> 1775081318 -0300	Branch: renamed refs/heads/master to refs/heads/main
+83f191816d12338c4810d872d0fb2bfe55aeb7f7 c43c006f86ac3691af5db11172da80f96785541a carlosdbnet <carlos.dbnet@gmail.com> 1775081844 -0300	commit: Fix: removendo dependências do Firebird para deploy no Vercel
+c43c006f86ac3691af5db11172da80f96785541a c306671b798005ec688b8a6622c5f5f3e31ba92d carlosdbnet <carlos.dbnet@gmail.com> 1775082608 -0300	commit: Fix: removendo import não utilizado do fdb que causava erro no Vercel
+c306671b798005ec688b8a6622c5f5f3e31ba92d 21e531ea10fff8ed5e5016ab6fde3d3d734c783a carlosdbnet <carlos.dbnet@gmail.com> 1775083751 -0300	commit: Fix: resolvendo problemas de importação no ambiente Vercel (monorepo)
+21e531ea10fff8ed5e5016ab6fde3d3d734c783a efae2be115b3726972a41c80f8224378e58453e8 carlosdbnet <carlos.dbnet@gmail.com> 1776197116 -0300	commit: Corrige case-sensitive no app.json e depura bugs bloqueantes de prebuild

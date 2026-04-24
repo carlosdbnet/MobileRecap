@@ -2,7 +2,7 @@ from database import engine
 from sqlalchemy import text
 
 def get_schema():
-    tables = ['pneu_servico']
+    tables = ['servico']
     with engine.connect() as conn:
         for table in tables:
             print(f"--- TABLE: {table} ---")

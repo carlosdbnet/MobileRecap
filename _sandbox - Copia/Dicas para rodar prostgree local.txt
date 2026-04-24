@@ -1,0 +1,21 @@
+Viewed database.py:1-37
+Edited database.py
+Edited .env
+
+O arquivo `.env` foi criado e o backend já está configurado para utilizá-lo! ???
+
+### O que foi feito:
+1.  **Suporte ao Dotenv**: Atualizei o arquivo `backend/database.py` para carregar as variáveis de ambiente automaticamente de um arquivo `.env` local.
+2.  **Criação do [.env](file:///c:/Sistema/mobcap/backend/.env)**: Criei o arquivo na pasta `backend` com a sua conexão atual do Neon. 
+
+### Como usar no futuro:
+- **Para Testar na Nuvem (Real)**: Mantenha a linha `POSTGRES_URL` apontando para o link do Neon no seu `.env`.
+- **Para Testar Localmente (Isolado)**: 
+  1. Instale o PostgreSQL no seu computador.
+  2. Altere o valor de `POSTGRES_URL` no `.env` para algo como `postgresql://usuario:senha@localhost:5432/seu_banco_local`.
+  3. O sistema passará a usar o banco local instantaneamente sem você precisar mexer em mais nenhum código.
+
+> [!IMPORTANT]
+> **Segurança**: Nunca envie o arquivo `.env` para o GitHub. Certifique-se de que ele esteja listado no seu arquivo `.gitignore`. O Vercel gerencia essas variáveis de forma segura através do painel de controle deles, não pelo arquivo.
+
+Com isso, seu ambiente está **pronto para produção** e **flexível para desenvolvimento**! Deseja que eu ajude com mais alguma configuração para o deploy ou testes?

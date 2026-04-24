@@ -151,8 +151,8 @@ export default function ConfiguracaoScreen() {
     try {
       await AsyncStorage.setItem('server_ip', ip);
       await AsyncStorage.setItem('server_port', porta);
-      await AsyncStorage.setItem('default_setor', setor.toString());
-      await AsyncStorage.setItem('default_operador', operador.toString());
+      await AsyncStorage.setItem('default_setor', String(setor || ''));
+      await AsyncStorage.setItem('default_operador', String(operador || ''));
       
       Alert.alert('Sucesso', 'Configurações salvas!');
     } catch (error) {
@@ -232,7 +232,7 @@ export default function ConfiguracaoScreen() {
               >
                 <Picker.Item label="Selecione um Setor..." value="" color={colors.textSecondary} />
                 {listaSetores.map(s => (
-                  <Picker.Item key={s.id} label={s.DESCRICAO} value={s.id} color={colors.text} />
+                  <Picker.Item key={s.id} label={s.descricao || s.DESCRICAO} value={s.id} color={colors.text} />
                 ))}
               </Picker>
             </View>
@@ -250,7 +250,7 @@ export default function ConfiguracaoScreen() {
               >
                 <Picker.Item label="Selecione um Operador..." value="" color={colors.textSecondary} />
                 {listaOperadores.map(o => (
-                  <Picker.Item key={o.id} label={o.NOME} value={o.id} color={colors.text} />
+                  <Picker.Item key={o.id} label={o.nome || o.NOME} value={o.id} color={colors.text} />
                 ))}
               </Picker>
             </View>

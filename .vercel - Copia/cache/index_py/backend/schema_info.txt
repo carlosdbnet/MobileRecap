@@ -1,0 +1,91 @@
+=== Tables reflected successfully ===
+
+Table: consumo
+  - id (INTEGER)
+  - id_produto (INTEGER)
+  - quantidade (FLOAT)
+  - data (DATE)
+
+Table: empresa
+  - id (INTEGER)
+  - razaosocial (VARCHAR(200))
+  - nomefantasia (VARCHAR(200))
+  - endereco (VARCHAR(255))
+  - bairro (VARCHAR(100))
+  - cep (VARCHAR(30))
+  - cidade (VARCHAR(100))
+  - uf (VARCHAR(2))
+  - Cnpj (VARCHAR(20))
+  - inscricao (VARCHAR(100))
+  - telefone (VARCHAR(50))
+  - email (VARCHAR(150))
+  - incricaomunicipal (VARCHAR(50))
+  - aliquotaiss (FLOAT)
+  - regimetributacao (VARCHAR(100))
+  - clientid (VARCHAR(255))
+  - secretid (VARCHAR(255))
+  - codigoaut2 (VARCHAR(255))
+  - token (VARCHAR(8000))
+  - logo (BLOB)
+
+Table: expedicao
+  - id (INTEGER)
+  - codigo_barra (VARCHAR(100))
+  - id_pneu (INTEGER)
+  - data (DATE)
+  - observacao (VARCHAR(200))
+
+Table: falha
+  - id (INTEGER)
+  - descricao (VARCHAR(255))
+  - valor_custo (FLOAT)
+  - status (VARCHAR(20))
+
+Table: operador
+  - id (INTEGER)
+  - nome (VARCHAR(200))
+  - id_setor (INTEGER)
+  - valor_hora (FLOAT)
+  - status (VARCHAR(20))
+
+Table: pneu
+  - id (INTEGER)
+  - codigo_barra (VARCHAR(100))
+  - id_cliente (INTEGER)
+  - medida (VARCHAR(20))
+  - desenho (VARCHAR(20))
+  - marca (VARCHAR(20))
+  - dot (VARCHAR(20))
+  - numserie (VARCHAR(20))
+  - numfogo (VARCHAR(20))
+  - data_entrada (DATE)
+  - data_producao (DATE)
+  - data_faturamento (DATE)
+  - data_expedicao (DATE)
+  - status (VARCHAR(20))
+
+Table: producao
+  - id (INTEGER)
+  - codigo_barra (VARCHAR(100))
+  - id_pneu (INTEGER)
+  - id_setor (INTEGER)
+  - id_operdor (INTEGER)
+  - data_inicio (DATE)
+  - data_fim (DATE)
+
+Table: regitrofalha
+  - id (INTEGER)
+  - codigo_barra (VARCHAR(100))
+  - id_pneu (INTEGER)
+  - id_setor (INTEGER)
+  - id_operdor (INTEGER)
+  - id_falha (INTEGER)
+  - data (DATE)
+  - observacao (VARCHAR(200))
+
+Table: setor
+  - id (INTEGER)
+  - descricao (VARCHAR(200))
+  - tempo_padrao (FLOAT)
+  - sequencia (INTEGER)
+  - status (VARCHAR(20))

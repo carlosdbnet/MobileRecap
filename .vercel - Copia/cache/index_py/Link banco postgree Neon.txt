@@ -1,0 +1,5 @@
+postgresql://neondb_owner:npg_TBWgl4SM1Ejn@ep-morning-water-acsrbm4u-pooler.sa-east-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require
+
+senha: npg_TBWgl4SM1Ejn
+
+usuario: neondb_owner

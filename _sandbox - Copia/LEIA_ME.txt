@@ -1,0 +1,6 @@
+Este é um diretório seguro (sandbox) para guardar rascunhos, scripts de testes e debugs avulsos (como diag.py, db_check.py, dump_pneu.py, etc).
+
+Regras deste diretório:
+1. Todos os arquivos colocados aqui estão configurados para serem IGNORADOS pelo Git (graças a diretiva no .gitignore principal).
+2. Você pode rodar, editar e apagar arquivos livremente sem afetar o histórico de commits do seu projeto principal.
+3. Se o script se tornar útil e for para produção, basta movê-lo de volta para a pasta `backend/` ou `frontend/`.
